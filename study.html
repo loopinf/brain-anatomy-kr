@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>뇌 구조 학습 · Brain Anatomy</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', sans-serif;
+  background: #faf8f3;
+  color: #1e1e1e;
+  margin: 0;
+  padding: 20px;
+  line-height: 1.55;
+}
+.wrap { max-width: 1180px; margin: 0 auto; }
+header { margin-bottom: 14px; }
+h1 { margin: 0 0 4px; font-size: 22px; letter-spacing: -0.01em; }
+.subtitle { color: #777; font-size: 13px; }
+
+.tabs { display: flex; gap: 6px; margin: 14px 0 16px; flex-wrap: wrap; }
+.tab {
+  padding: 8px 14px; border-radius: 999px; border: 1px solid #ddd;
+  background: #fff; cursor: pointer; font-size: 13px; font-weight: 500;
+  transition: all 0.15s;
+}
+.tab:hover { border-color: #999; }
+.tab.active { background: #1e1e1e; color: #fff; border-color: #1e1e1e; }
+
+.view-toggle { display: inline-flex; gap: 0; margin-bottom: 12px; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
+.view-toggle button {
+  padding: 6px 14px; border: 0; background: #fff; cursor: pointer;
+  font-size: 12px; font-weight: 500; color: #555;
+}
+.view-toggle button.active { background: #2d4a7a; color: #fff; }
+
+/* ---------- Learn mode ---------- */
+.learn-grid {
+  display: grid; grid-template-columns: 1.3fr 1fr; gap: 20px;
+}
+@media (max-width: 900px) { .learn-grid { grid-template-columns: 1fr; } }
+
+.brain-box {
+  background: #fff; border: 1px solid #e8e4d8; border-radius: 12px;
+  padding: 16px; position: relative;
+}
+.brain-svg { width: 100%; height: auto; display: block; }
+.region {
+  cursor: pointer;
+  transition: opacity 0.15s, stroke-width 0.15s;
+  opacity: 0.72;
+}
+.region:hover { opacity: 1; }
+.region.active { opacity: 1; stroke: #1e1e1e; stroke-width: 2.5; }
+.label-text {
+  font-size: 11px; font-weight: 600; fill: #222; pointer-events: none;
+  text-anchor: middle;
+}
+.label-line { stroke: #333; stroke-width: 1; fill: none; pointer-events: none; }
+
+.info-box {
+  background: #fff; border: 1px solid #e8e4d8; border-radius: 12px;
+  padding: 20px; min-height: 400px;
+}
+.info-empty { color: #999; text-align: center; padding: 80px 20px; font-size: 14px; }
+.name-en { font-size: 26px; font-weight: 700; letter-spacing: -0.01em; margin: 0; }
+.name-kr { font-size: 20px; font-weight: 600; color: #2d4a7a; margin: 4px 0 0; }
+.name-hanja { font-size: 16px; color: #999; margin: 2px 0 14px; font-family: 'Noto Serif KR', serif; }
+.cat-tag {
+  display: inline-block; padding: 3px 9px; background: #f0ece1; border-radius: 6px;
+  font-size: 11px; color: #6b5d3e; margin-bottom: 14px;
+}
+.info-row { margin: 12px 0; }
+.info-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: #999; font-weight: 600; margin-bottom: 3px; }
+.info-text { font-size: 14px; color: #333; }
+.mnemonic {
+  background: #fff8e1; border-left: 3px solid #e0b84d; padding: 10px 12px;
+  border-radius: 0 6px 6px 0; margin-top: 14px; font-size: 13px;
+}
+
+.chip-list { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  padding: 5px 10px; background: #fff; border: 1px solid #ddd; border-radius: 999px;
+  font-size: 12px; cursor: pointer; transition: all 0.15s;
+}
+.chip:hover { border-color: #2d4a7a; color: #2d4a7a; }
+.chip.active { background: #2d4a7a; color: #fff; border-color: #2d4a7a; }
+
+/* ---------- Flashcard mode ---------- */
+.card-wrap { max-width: 640px; margin: 10px auto; }
+.card {
+  background: #fff; border: 1px solid #e8e4d8; border-radius: 16px;
+  padding: 28px; min-height: 440px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+}
+.card-front { text-align: center; }
+.card-front .mini-brain { max-width: 360px; margin: 0 auto 16px; }
+.card-front .hint { color: #888; margin-top: 10px; font-size: 13px; }
+.card-actions {
+  display: flex; justify-content: space-between; align-items: center;
+  max-width: 640px; margin: 14px auto 0;
+}
+.card-btn {
+  padding: 10px 18px; border: 1px solid #ddd; background: #fff;
+  border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500;
+}
+.card-btn:hover { border-color: #2d4a7a; color: #2d4a7a; }
+.card-btn.primary { background: #1e1e1e; color: #fff; border-color: #1e1e1e; }
+.card-progress { color: #888; font-size: 13px; }
+.reveal-btn {
+  display: block; margin: 20px auto 0;
+  padding: 12px 28px; background: #2d4a7a; color: #fff;
+  border: 0; border-radius: 999px; cursor: pointer; font-size: 14px; font-weight: 500;
+}
+
+/* ---------- Quiz mode ---------- */
+.quiz-wrap { max-width: 640px; margin: 10px auto; }
+.quiz-card {
+  background: #fff; border: 1px solid #e8e4d8; border-radius: 16px;
+  padding: 24px;
+}
+.quiz-q { font-size: 15px; color: #555; margin-bottom: 10px; }
+.quiz-target { font-size: 19px; font-weight: 600; margin-bottom: 16px; }
+.quiz-options { display: grid; gap: 8px; }
+.quiz-opt {
+  padding: 12px 14px; border: 1px solid #ddd; background: #fff; border-radius: 8px;
+  cursor: pointer; text-align: left; font-size: 14px; transition: all 0.12s;
+}
+.quiz-opt:hover { border-color: #2d4a7a; }
+.quiz-opt.correct { background: #e6f4e6; border-color: #4a9a4a; color: #1e5c1e; }
+.quiz-opt.wrong { background: #fbeaea; border-color: #c94a4a; color: #7a2020; }
+.quiz-opt:disabled { cursor: default; }
+.quiz-next { margin-top: 14px; text-align: center; }
+.quiz-score { text-align: center; padding: 40px 20px; font-size: 16px; }
+.quiz-score .score-num { font-size: 48px; font-weight: 700; color: #2d4a7a; margin: 10px 0; }
+
+.hidden { display: none !important; }
+
+/* Brain region color palette */
+.r-frontal   { fill: #f4b5a2; }
+.r-parietal  { fill: #a2c9a8; }
+.r-temporal  { fill: #f0d78b; }
+.r-occipital { fill: #b8a2d9; }
+.r-cerebellum{ fill: #e89bb8; }
+.r-brainstem { fill: #c9a98a; }
+.r-midbrain  { fill: #d4b896; }
+.r-pons      { fill: #b89a78; }
+.r-medulla   { fill: #9c7e5e; }
+.r-thalamus  { fill: #87b5d4; }
+.r-hypothalamus{ fill: #6fa0c2; }
+.r-hippocampus{ fill: #e0a868; }
+.r-amygdala  { fill: #c94a4a; }
+.r-corpus-callosum { fill: #d9d4c4; }
+.r-pituitary { fill: #f588a8; }
+
+.region-stroke { stroke: #5a4a3a; stroke-width: 1; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>뇌 구조 학습 · Brain Anatomy Basics</h1>
+    <div class="subtitle">영어 · 한국어 · 한자어 함께 익히기 · 핵심 15개 부위</div>
+  </header>
+
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-mode="learn">학습 모드</button>
+    <button class="tab" data-mode="flash">플래시카드</button>
+    <button class="tab" data-mode="quiz">퀴즈</button>
+  </div>
+
+  <!-- LEARN MODE -->
+  <section id="mode-learn">
+    <div class="view-toggle">
+      <button class="active" data-view="lateral">측면도 (Lateral)</button>
+      <button data-view="sagittal">단면도 (Midsagittal)</button>
+    </div>
+
+    <div class="learn-grid">
+      <div class="brain-box">
+        <svg class="brain-svg" id="brainSvgLateral" viewBox="0 0 800 520"></svg>
+        <svg class="brain-svg hidden" id="brainSvgSagittal" viewBox="0 0 800 520"></svg>
+      </div>
+      <div class="info-box" id="infoBox">
+        <div class="info-empty">그림에서 부위를 클릭하거나<br>아래 이름을 선택하세요</div>
+      </div>
+    </div>
+
+    <div class="chip-list" id="chipList"></div>
+  </section>
+
+  <!-- FLASHCARD MODE -->
+  <section id="mode-flash" class="hidden">
+    <div class="card-wrap">
+      <div class="card" id="flashCard"></div>
+      <div class="card-actions">
+        <button class="card-btn" id="prevBtn">← 이전</button>
+        <span class="card-progress" id="flashProgress">1 / 15</span>
+        <button class="card-btn primary" id="nextBtn">다음 →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ MODE -->
+  <section id="mode-quiz" class="hidden">
+    <div class="quiz-wrap">
+      <div class="quiz-card" id="quizCard"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+const DATA = [
+  {id:"frontal",en:"Frontal Lobe",kr:"전두엽",hanja:"前頭葉",category:"대뇌피질 4엽",etymology:"前(앞 전)+頭(머리 두)+葉(잎 엽) — '앞머리의 잎'",location:"이마 바로 뒤, 대뇌의 앞부분",function:"사고, 판단, 계획, 의사결정, 성격, 수의운동, 말하기(브로카 영역)",mnemonic:"'이마=생각' — 앞쪽이 사람의 '인간다움'을 담당",view:"lateral"},
+  {id:"parietal",en:"Parietal Lobe",kr:"두정엽",hanja:"頭頂葉",category:"대뇌피질 4엽",etymology:"頭(머리)+頂(정수리)+葉(잎) — '정수리 쪽의 잎'",location:"머리 꼭대기(정수리), 전두엽 뒤",function:"촉각·온도·통증 등 체성감각, 공간 인지, 주의, 숫자·계산",mnemonic:"'정수리=느낌' — 몸 전체의 감각이 모이는 곳",view:"lateral"},
+  {id:"temporal",en:"Temporal Lobe",kr:"측두엽",hanja:"側頭葉",category:"대뇌피질 4엽",etymology:"側(옆)+頭(머리)+葉(잎). 영어 temporal도 관자놀이(temple)에서 유래",location:"관자놀이 안쪽, 귀 주변 대뇌 옆면",function:"청각, 언어 이해(베르니케 영역), 얼굴·물체 인식, 기억(내부에 해마)",mnemonic:"'귀 옆=듣고 기억' — 듣기·기억의 중심",view:"lateral"},
+  {id:"occipital",en:"Occipital Lobe",kr:"후두엽",hanja:"後頭葉",category:"대뇌피질 4엽",etymology:"後(뒤)+頭(머리)+葉(잎) — '뒷머리의 잎'",location:"뒤통수, 대뇌의 맨 뒤쪽",function:"시각 처리 전담. 색·형태·움직임 등(1차 시각피질 V1)",mnemonic:"'뒤통수=눈' — 눈에서 온 신호가 여기로",view:"lateral"},
+  {id:"cerebellum",en:"Cerebellum",kr:"소뇌",hanja:"小腦",category:"후뇌",etymology:"小(작을)+腦(뇌). 라틴어 cerebellum=작은 뇌",location:"대뇌 뒤아래, 뇌간 뒤쪽에 붙어 있음",function:"균형, 자세, 정교한 운동 협응, 운동 학습(자전거 타기)",mnemonic:"'작은 뇌=균형과 협응' — 운동 숙련",view:"lateral"},
+  {id:"brainstem",en:"Brainstem",kr:"뇌간",hanja:"腦幹",category:"뇌간 전체",etymology:"腦(뇌)+幹(줄기). 중뇌+뇌교+연수",location:"대뇌 아래, 척수와 연결되는 '줄기'",function:"생명 유지의 핵심: 호흡, 심박, 혈압, 각성, 반사",mnemonic:"'줄기=생명' — 손상 시 즉각 위험",view:"both"},
+  {id:"midbrain",en:"Midbrain",kr:"중뇌",hanja:"中腦",category:"뇌간",etymology:"中(가운데)+腦(뇌) — 뇌간의 가운데",location:"뇌간 중 가장 위쪽 (시상 바로 아래)",function:"안구 운동, 시각·청각 반사, 각성 유지. 도파민 생성(흑질)",mnemonic:"'가운데=반사' — 소리에 고개 돌리는 자동 반응",view:"sagittal"},
+  {id:"pons",en:"Pons",kr:"교뇌",hanja:"橋腦",category:"뇌간",etymology:"橋(다리)+腦. 라틴어 pons=다리. 대뇌↔소뇌 연결",location:"중뇌와 연수 사이, 뇌간 중간",function:"수면-각성, 호흡 보조, 얼굴 감각·표정, 대뇌-소뇌 중계",mnemonic:"'다리(橋)=연결' — 위아래를 잇는 다리",view:"sagittal"},
+  {id:"medulla",en:"Medulla Oblongata",kr:"연수",hanja:"延髓",category:"뇌간",etymology:"延(늘일)+髓(골수). '늘어난 골수(척수)'",location:"뇌간 맨 아래, 척수 바로 위",function:"호흡·심박·혈압 자동 조절, 구토·기침·재채기·삼킴 반사",mnemonic:"'연수=생존 센터' — 의식 없어도 숨쉬게 함",view:"sagittal"},
+  {id:"thalamus",en:"Thalamus",kr:"시상",hanja:"視床",category:"간뇌",etymology:"視(볼)+床(평상). 그리스어 thalamos=방. '감각이 머무는 방'",location:"대뇌 한가운데 깊숙이, 좌우 한 쌍",function:"후각 제외 모든 감각(시각·청각·촉각)을 대뇌피질로 중계",mnemonic:"'감각의 환승역' — 모든 감각이 여기서 갈아탄다",view:"sagittal"},
+  {id:"hypothalamus",en:"Hypothalamus",kr:"시상하부",hanja:"視床下部",category:"간뇌",etymology:"視床(시상)+下部(아래). hypo-=아래",location:"시상 바로 아래, 뇌 중앙 바닥",function:"항상성 유지: 체온·배고픔·갈증·수면·호르몬. 뇌하수체 통제",mnemonic:"'3대 욕구 사령탑' — 식·수면·번식 본능",view:"sagittal"},
+  {id:"hippocampus",en:"Hippocampus",kr:"해마",hanja:"海馬",category:"변연계",etymology:"海(바다)+馬(말). 그리스어 hippos(말)+kampos(바다괴물). 모양이 해마 닮음",location:"좌우 측두엽 안쪽 깊숙이, 한 쌍",function:"새 기억 형성과 장기기억. 공간 기억(길 찾기). 알츠하이머가 먼저 침범",mnemonic:"'기억의 공장' — 영화 〈메멘토〉의 그곳",view:"sagittal"},
+  {id:"amygdala",en:"Amygdala",kr:"편도체",hanja:"扁桃體",category:"변연계",etymology:"扁(납작)+桃(복숭아)+體(몸). 그리스어 amygdale=아몬드",location:"해마 바로 앞, 측두엽 안쪽",function:"감정 처리, 특히 공포·분노·위험 감지. 감정 기억 각인",mnemonic:"'공포 알람' — 뱀 보고 놀라는 반응",view:"sagittal"},
+  {id:"corpus-callosum",en:"Corpus Callosum",kr:"뇌량",hanja:"腦梁",category:"연결 구조",etymology:"腦(뇌)+梁(들보). '뇌의 들보'",location:"좌우 대뇌반구 사이, 뇌 한가운데 두꺼운 띠",function:"좌뇌와 우뇌를 연결하는 약 2억 개 신경섬유. 양쪽 정보 교환",mnemonic:"'좌우뇌 고속도로' — 끊으면 분리뇌 증후군",view:"sagittal"},
+  {id:"pituitary",en:"Pituitary Gland",kr:"뇌하수체",hanja:"腦下垂體",category:"내분비",etymology:"腦+下垂(드리울)+體 — '뇌 아래 매달린 몸'",location:"시상하부 바로 아래, 콩알 크기로 뇌 바닥에 매달림",function:"'내분비의 왕': 성장·갑상선자극·부신자극·성호르몬 총괄",mnemonic:"'호르몬 사령부' — 작지만 온몸 지휘",view:"sagittal"}
+];
+
+// ---- SVG BRAIN DRAWINGS ----
+// Lateral (side) view
+const LATERAL_SVG = `
+<defs>
+  <filter id="sh" x="-10%" y="-10%" width="120%" height="120%">
+    <feGaussianBlur stdDeviation="2" />
+  </filter>
+</defs>
+<!-- outline of whole brain (for reference) -->
+<g stroke="#5a4a3a" stroke-width="1.5" fill="none">
+  <!-- cerebrum outer outline -->
+  <path d="M 90,280 C 90,170 180,85 360,80 C 540,80 680,150 700,270 C 710,340 680,400 590,410 L 260,410 C 150,410 90,360 90,280 Z" fill="#faf5ec"/>
+  <!-- lateral sulcus (Sylvian fissure) separating temporal from frontal/parietal -->
+  <path d="M 180,300 C 260,280 340,290 460,305 C 520,315 560,330 600,350" stroke-width="1.2"/>
+  <!-- central sulcus separating frontal from parietal -->
+  <path d="M 350,85 C 360,180 370,260 400,300" stroke-width="1.2"/>
+  <!-- parieto-occipital boundary -->
+  <path d="M 560,110 C 560,200 580,290 600,340" stroke-width="1.2"/>
+</g>
+
+<!-- Frontal lobe -->
+<path class="region r-frontal region-stroke" data-id="frontal"
+  d="M 90,280 C 90,170 180,85 350,82 C 360,180 370,260 395,300 C 340,305 270,300 200,305 C 150,305 110,300 90,285 Z"/>
+<!-- Parietal lobe -->
+<path class="region r-parietal region-stroke" data-id="parietal"
+  d="M 350,82 C 450,80 540,90 560,110 C 560,200 580,290 595,335 C 550,320 470,310 400,300 C 370,260 360,180 350,82 Z"/>
+<!-- Occipital lobe -->
+<path class="region r-occipital region-stroke" data-id="occipital"
+  d="M 560,110 C 640,130 695,190 700,270 C 700,310 685,340 660,360 C 640,355 615,348 595,335 C 580,290 560,200 560,110 Z"/>
+<!-- Temporal lobe -->
+<path class="region r-temporal region-stroke" data-id="temporal"
+  d="M 200,305 C 270,300 340,305 395,300 C 420,320 460,345 510,360 C 530,380 530,405 510,412 L 280,412 C 220,410 180,380 170,340 C 170,325 185,310 200,305 Z"/>
+<!-- Cerebellum -->
+<path class="region r-cerebellum region-stroke" data-id="cerebellum"
+  d="M 560,370 C 620,360 685,370 700,410 C 695,450 650,475 590,475 C 540,475 505,450 510,415 C 515,395 535,378 560,370 Z"/>
+<!-- simulate cerebellum folds -->
+<g fill="none" stroke="#8a5d7a" stroke-width="0.8" opacity="0.6" pointer-events="none">
+  <path d="M 540,395 Q 600,385 670,400"/>
+  <path d="M 535,415 Q 600,405 680,420"/>
+  <path d="M 540,435 Q 600,428 670,440"/>
+  <path d="M 555,455 Q 600,452 650,460"/>
+</g>
+<!-- simulate gyri (cortex folds) -->
+<g fill="none" stroke="#a07560" stroke-width="0.7" opacity="0.45" pointer-events="none">
+  <path d="M 120,200 Q 180,180 250,200"/>
+  <path d="M 130,240 Q 210,225 290,250"/>
+  <path d="M 150,170 Q 200,150 260,160"/>
+  <path d="M 400,110 Q 470,105 540,120"/>
+  <path d="M 410,170 Q 490,165 550,190"/>
+  <path d="M 420,230 Q 500,225 570,250"/>
+  <path d="M 600,180 Q 650,190 680,220"/>
+  <path d="M 595,240 Q 645,245 685,270"/>
+  <path d="M 230,340 Q 320,350 420,365"/>
+  <path d="M 240,370 Q 340,380 450,390"/>
+</g>
+<!-- Brainstem -->
+<path class="region r-brainstem region-stroke" data-id="brainstem"
+  d="M 470,405 L 530,405 L 535,490 Q 500,505 465,490 Z"/>
+
+<!-- Labels -->
+<g>
+  <line class="label-line" x1="220" y1="180" x2="110" y2="130"/>
+  <text class="label-text" x="85" y="122">Frontal 전두엽</text>
+
+  <line class="label-line" x1="470" y1="150" x2="560" y2="95"/>
+  <text class="label-text" x="605" y="92">Parietal 두정엽</text>
+
+  <line class="label-line" x1="650" y1="230" x2="740" y2="200"/>
+  <text class="label-text" x="740" y="195">Occipital 후두엽</text>
+
+  <line class="label-line" x1="320" y1="380" x2="220" y2="460"/>
+  <text class="label-text" x="200" y="478">Temporal 측두엽</text>
+
+  <line class="label-line" x1="620" y1="430" x2="750" y2="440"/>
+  <text class="label-text" x="740" y="458">Cerebellum 소뇌</text>
+
+  <line class="label-line" x1="500" y1="470" x2="400" y2="500"/>
+  <text class="label-text" x="400" y="515">Brainstem 뇌간</text>
+</g>
+`;
+
+// Midsagittal (cross-section) view
+const SAGITTAL_SVG = `
+<!-- outer brain outline (halved) -->
+<g stroke="#5a4a3a" stroke-width="1.5" fill="none">
+  <path d="M 90,270 C 90,160 190,75 370,70 C 560,70 690,145 710,265 C 720,340 685,395 595,405 L 260,405 C 150,405 90,355 90,275 Z" fill="#faf5ec"/>
+</g>
+
+<!-- Cerebrum filler (white) behind -->
+<path d="M 92,275 C 92,165 192,80 370,75 C 550,75 682,150 702,265 L 600,270 L 430,230 L 280,245 L 160,230 Z"
+      fill="#f7f1e4" stroke="#d4c9a8" stroke-width="0.6"/>
+
+<!-- Corpus callosum - C-shape in middle -->
+<path class="region r-corpus-callosum region-stroke" data-id="corpus-callosum"
+  d="M 250,190 Q 220,140 290,120 Q 400,100 500,115 Q 580,130 560,185 Q 540,225 460,210 Q 380,195 320,205 Q 265,215 250,190 Z"/>
+<text class="label-text" x="400" y="160" style="font-size:10px;opacity:0.6;pointer-events:none">Corpus Callosum</text>
+
+<!-- Thalamus (egg in center) -->
+<ellipse class="region r-thalamus region-stroke" data-id="thalamus" cx="370" cy="260" rx="55" ry="32"/>
+
+<!-- Hypothalamus (below thalamus) -->
+<path class="region r-hypothalamus region-stroke" data-id="hypothalamus"
+  d="M 340,290 Q 370,305 400,290 Q 410,315 380,325 Q 355,330 335,320 Q 325,305 340,290 Z"/>
+
+<!-- Pituitary gland (hanging below hypothalamus) -->
+<ellipse class="region r-pituitary region-stroke" data-id="pituitary" cx="365" cy="345" rx="14" ry="11"/>
+<line x1="365" y1="328" x2="365" y2="338" stroke="#5a4a3a" stroke-width="1.5"/>
+
+<!-- Hippocampus (curved shape in temporal region) -->
+<path class="region r-hippocampus region-stroke" data-id="hippocampus"
+  d="M 240,330 Q 220,360 255,385 Q 295,395 320,375 Q 305,355 285,350 Q 265,345 260,340 Q 250,332 240,330 Z"/>
+
+<!-- Amygdala (small round mass near hippocampus front) -->
+<ellipse class="region r-amygdala region-stroke" data-id="amygdala" cx="230" cy="325" rx="14" ry="12"/>
+
+<!-- Midbrain -->
+<path class="region r-midbrain region-stroke" data-id="midbrain"
+  d="M 430,290 Q 465,285 470,315 Q 465,335 435,335 Q 420,320 430,290 Z"/>
+
+<!-- Pons -->
+<path class="region r-pons region-stroke" data-id="pons"
+  d="M 430,335 Q 475,335 480,370 Q 470,395 430,395 Q 415,370 430,335 Z"/>
+
+<!-- Medulla -->
+<path class="region r-medulla region-stroke" data-id="medulla"
+  d="M 430,395 Q 470,395 470,440 Q 460,470 430,470 Q 415,440 430,395 Z"/>
+
+<!-- Cerebellum (back of sagittal) -->
+<path class="region r-cerebellum region-stroke" data-id="cerebellum"
+  d="M 490,330 Q 600,320 680,370 Q 685,420 625,445 Q 555,450 510,430 Q 480,395 490,330 Z"/>
+<!-- cerebellum foliage lines -->
+<g fill="none" stroke="#8a5d7a" stroke-width="0.6" opacity="0.5" pointer-events="none">
+  <path d="M 510,350 Q 580,345 660,370"/>
+  <path d="M 510,370 Q 580,367 665,390"/>
+  <path d="M 515,395 Q 580,393 655,415"/>
+  <path d="M 525,420 Q 585,420 635,435"/>
+</g>
+
+<!-- Brainstem outline hint (subtle, non-interactive) -->
+
+<!-- Labels with leader lines -->
+<g>
+  <line class="label-line" x1="400" y1="125" x2="500" y2="60"/>
+  <text class="label-text" x="545" y="58">Corpus Callosum 뇌량</text>
+
+  <line class="label-line" x1="370" y1="260" x2="140" y2="160"/>
+  <text class="label-text" x="110" y="155">Thalamus 시상</text>
+
+  <line class="label-line" x1="370" y1="310" x2="135" y2="290"/>
+  <text class="label-text" x="105" y="287">Hypothalamus 시상하부</text>
+
+  <line class="label-line" x1="365" y1="350" x2="150" y2="390"/>
+  <text class="label-text" x="115" y="395">Pituitary 뇌하수체</text>
+
+  <line class="label-line" x1="280" y1="365" x2="180" y2="460"/>
+  <text class="label-text" x="175" y="478">Hippocampus 해마</text>
+
+  <line class="label-line" x1="230" y1="325" x2="85" y2="430"/>
+  <text class="label-text" x="85" y="448">Amygdala 편도체</text>
+
+  <line class="label-line" x1="460" y1="305" x2="600" y2="245"/>
+  <text class="label-text" x="655" y="243">Midbrain 중뇌</text>
+
+  <line class="label-line" x1="465" y1="365" x2="750" y2="300"/>
+  <text class="label-text" x="740" y="295">Pons 교뇌</text>
+
+  <line class="label-line" x1="460" y1="430" x2="640" y2="490"/>
+  <text class="label-text" x="650" y="507">Medulla 연수</text>
+
+  <line class="label-line" x1="600" y1="390" x2="740" y2="410"/>
+  <text class="label-text" x="735" y="428">Cerebellum 소뇌</text>
+</g>
+`;
+
+document.getElementById('brainSvgLateral').innerHTML = LATERAL_SVG;
+document.getElementById('brainSvgSagittal').innerHTML = SAGITTAL_SVG;
+
+// ---- STATE ----
+let currentMode = 'learn';
+let currentView = 'lateral';
+let selectedId = null;
+let flashIdx = 0;
+
+// ---- LEARN MODE ----
+function renderInfo(id) {
+  const item = DATA.find(d => d.id === id);
+  const box = document.getElementById('infoBox');
+  if (!item) {
+    box.innerHTML = '<div class="info-empty">그림에서 부위를 클릭하거나<br>아래 이름을 선택하세요</div>';
+    return;
+  }
+  box.innerHTML = `
+    <div class="cat-tag">${item.category}</div>
+    <h2 class="name-en">${item.en}</h2>
+    <div class="name-kr">${item.kr} <span style="color:#999;font-size:15px;font-weight:400">(${item.hanja})</span></div>
+    <div class="info-row">
+      <div class="info-label">📍 위치 · Location</div>
+      <div class="info-text">${item.location}</div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">⚙️ 기능 · Function</div>
+      <div class="info-text">${item.function}</div>
+    </div>
+    <div class="info-row">
+      <div class="info-label">🔤 한자 풀이 · Etymology</div>
+      <div class="info-text" style="color:#666">${item.etymology}</div>
+    </div>
+    <div class="mnemonic">💡 ${item.mnemonic}</div>
+  `;
+}
+function selectRegion(id) {
+  selectedId = id;
+  document.querySelectorAll('.region').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll(`.region[data-id="${id}"]`).forEach(el => el.classList.add('active'));
+  document.querySelectorAll('.chip').forEach(el => el.classList.toggle('active', el.dataset.id === id));
+  renderInfo(id);
+  // Auto-switch view if needed
+  const item = DATA.find(d => d.id === id);
+  if (item && item.view !== 'both') {
+    if (item.view !== currentView) setView(item.view);
+  }
+}
+document.querySelectorAll('.region').forEach(el => {
+  el.addEventListener('click', () => selectRegion(el.dataset.id));
+});
+function renderChips() {
+  const list = document.getElementById('chipList');
+  list.innerHTML = DATA.map(d =>
+    `<div class="chip" data-id="${d.id}">${d.kr} · ${d.en}</div>`
+  ).join('');
+  list.querySelectorAll('.chip').forEach(c => {
+    c.addEventListener('click', () => selectRegion(c.dataset.id));
+  });
+}
+renderChips();
+
+function setView(view) {
+  currentView = view;
+  document.querySelectorAll('.view-toggle button').forEach(b =>
+    b.classList.toggle('active', b.dataset.view === view));
+  document.getElementById('brainSvgLateral').classList.toggle('hidden', view !== 'lateral');
+  document.getElementById('brainSvgSagittal').classList.toggle('hidden', view !== 'sagittal');
+}
+document.querySelectorAll('.view-toggle button').forEach(b => {
+  b.addEventListener('click', () => setView(b.dataset.view));
+});
+
+// ---- TABS ----
+document.querySelectorAll('#tabs .tab').forEach(t => {
+  t.addEventListener('click', () => {
+    currentMode = t.dataset.mode;
+    document.querySelectorAll('#tabs .tab').forEach(x => x.classList.toggle('active', x === t));
+    document.getElementById('mode-learn').classList.toggle('hidden', currentMode !== 'learn');
+    document.getElementById('mode-flash').classList.toggle('hidden', currentMode !== 'flash');
+    document.getElementById('mode-quiz').classList.toggle('hidden', currentMode !== 'quiz');
+    if (currentMode === 'flash') renderFlash();
+    if (currentMode === 'quiz') startQuiz();
+  });
+});
+
+// ---- FLASHCARD MODE ----
+let flashRevealed = false;
+function renderFlash() {
+  const item = DATA[flashIdx];
+  const card = document.getElementById('flashCard');
+  document.getElementById('flashProgress').textContent = `${flashIdx+1} / ${DATA.length}`;
+  if (!flashRevealed) {
+    card.innerHTML = `
+      <div class="card-front">
+        <div class="cat-tag">${item.category}</div>
+        <div style="margin:30px 0;font-size:14px;color:#888">이 부위의 이름을 영어·한국어·한자로 말해보세요</div>
+        <svg viewBox="0 0 800 520" class="mini-brain" style="max-height:280px">
+          ${item.view === 'lateral' ? LATERAL_SVG : SAGITTAL_SVG}
+        </svg>
+        <div class="hint">↑ 강조된 부위에 집중</div>
+        <button class="reveal-btn" onclick="revealFlash()">정답 보기</button>
+      </div>
+    `;
+    // highlight the target region in the embedded SVG
+    setTimeout(() => {
+      card.querySelectorAll('.region').forEach(el => {
+        el.style.opacity = '0.2';
+        el.style.pointerEvents = 'none';
+      });
+      card.querySelectorAll(`.region[data-id="${item.id}"]`).forEach(el => {
+        el.style.opacity = '1';
+        el.setAttribute('stroke', '#c94a4a');
+        el.setAttribute('stroke-width', '3');
+      });
+    }, 20);
+  } else {
+    card.innerHTML = `
+      <div class="cat-tag">${item.category}</div>
+      <h2 class="name-en">${item.en}</h2>
+      <div class="name-kr">${item.kr} <span style="color:#999;font-size:15px;font-weight:400">(${item.hanja})</span></div>
+      <div class="info-row"><div class="info-label">📍 위치</div><div class="info-text">${item.location}</div></div>
+      <div class="info-row"><div class="info-label">⚙️ 기능</div><div class="info-text">${item.function}</div></div>
+      <div class="info-row"><div class="info-label">🔤 한자 풀이</div><div class="info-text" style="color:#666">${item.etymology}</div></div>
+      <div class="mnemonic">💡 ${item.mnemonic}</div>
+    `;
+  }
+}
+function revealFlash() { flashRevealed = true; renderFlash(); }
+document.getElementById('prevBtn').addEventListener('click', () => {
+  flashIdx = (flashIdx - 1 + DATA.length) % DATA.length;
+  flashRevealed = false; renderFlash();
+});
+document.getElementById('nextBtn').addEventListener('click', () => {
+  flashIdx = (flashIdx + 1) % DATA.length;
+  flashRevealed = false; renderFlash();
+});
+window.revealFlash = revealFlash;
+
+// ---- QUIZ MODE ----
+let quizIdx = 0, quizScore = 0, quizOrder = [], quizAnswered = false;
+function shuffle(arr) { const a=[...arr]; for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+function startQuiz() {
+  quizIdx = 0; quizScore = 0; quizOrder = shuffle(DATA).slice(0, 10); quizAnswered = false;
+  renderQuiz();
+}
+function renderQuiz() {
+  const card = document.getElementById('quizCard');
+  if (quizIdx >= quizOrder.length) {
+    card.innerHTML = `
+      <div class="quiz-score">
+        <div>퀴즈 완료!</div>
+        <div class="score-num">${quizScore} / ${quizOrder.length}</div>
+        <div style="color:#777;margin-bottom:20px">${quizScore === quizOrder.length ? '완벽! 🎉' : quizScore >= 7 ? '잘했어요! 👍' : '다시 복습해볼까요?'}</div>
+        <button class="card-btn primary" onclick="startQuiz()">다시 시작</button>
+      </div>`;
+    return;
+  }
+  const q = quizOrder[quizIdx];
+  // build 4 options: 1 correct + 3 distractors
+  const distractors = shuffle(DATA.filter(d => d.id !== q.id)).slice(0, 3);
+  const opts = shuffle([q, ...distractors]);
+  // Question: show SVG with highlight + ask name
+  card.innerHTML = `
+    <div class="quiz-q">Q${quizIdx+1}. 강조된 부위의 이름은? (${quizIdx+1}/${quizOrder.length}, 점수 ${quizScore})</div>
+    <svg viewBox="0 0 800 520" style="width:100%;max-height:260px;display:block;margin-bottom:14px">
+      ${q.view === 'lateral' ? LATERAL_SVG : SAGITTAL_SVG}
+    </svg>
+    <div class="quiz-options">
+      ${opts.map(o => `<button class="quiz-opt" data-correct="${o.id===q.id}" data-id="${o.id}">${o.en} · ${o.kr} (${o.hanja})</button>`).join('')}
+    </div>
+    <div class="quiz-next hidden" id="quizNextWrap">
+      <div id="quizFeedback" style="margin-bottom:10px;font-size:13px"></div>
+      <button class="card-btn primary" onclick="nextQuiz()">다음 문제 →</button>
+    </div>
+  `;
+  // highlight target
+  setTimeout(() => {
+    card.querySelectorAll('.region').forEach(el => { el.style.opacity='0.2'; el.style.pointerEvents='none'; });
+    card.querySelectorAll(`.region[data-id="${q.id}"]`).forEach(el => {
+      el.style.opacity='1'; el.setAttribute('stroke','#c94a4a'); el.setAttribute('stroke-width','3');
+    });
+  }, 20);
+  card.querySelectorAll('.quiz-opt').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (quizAnswered) return;
+      quizAnswered = true;
+      const correct = btn.dataset.correct === 'true';
+      if (correct) { btn.classList.add('correct'); quizScore++; }
+      else {
+        btn.classList.add('wrong');
+        card.querySelector(`.quiz-opt[data-id="${q.id}"]`).classList.add('correct');
+      }
+      card.querySelectorAll('.quiz-opt').forEach(b => b.disabled = true);
+      document.getElementById('quizNextWrap').classList.remove('hidden');
+      document.getElementById('quizFeedback').innerHTML = correct
+        ? `<span style="color:#4a9a4a">✓ 정답!</span> ${q.mnemonic}`
+        : `<span style="color:#c94a4a">✗ 정답은 <b>${q.en} · ${q.kr}</b></span><br><span style="color:#666">${q.mnemonic}</span>`;
+    });
+  });
+}
+function nextQuiz() { quizIdx++; quizAnswered=false; renderQuiz(); }
+window.startQuiz = startQuiz;
+window.nextQuiz = nextQuiz;
+</script>
+</body>
+</html>

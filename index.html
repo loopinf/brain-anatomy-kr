@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>뇌 구조 학습 · Brain Anatomy (EN·KR·漢字)</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Segoe UI', sans-serif;
+  background: #faf8f3; color: #1e1e1e; min-height: 100vh;
+  padding: 40px 20px; line-height: 1.6;
+}
+.wrap { max-width: 860px; margin: 0 auto; }
+.hero {
+  text-align: center; padding: 30px 20px 40px;
+}
+h1 { font-size: clamp(28px, 5vw, 42px); letter-spacing: -0.02em; margin-bottom: 8px; }
+.tag { color: #2d4a7a; font-weight: 600; margin-bottom: 8px; }
+.lead { color: #666; font-size: 15px; max-width: 560px; margin: 0 auto; }
+
+.grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px; margin: 30px 0;
+}
+.card {
+  background: #fff; border: 1px solid #e8e4d8; border-radius: 14px;
+  padding: 24px; text-decoration: none; color: inherit;
+  transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.card:hover {
+  transform: translateY(-2px); border-color: #2d4a7a;
+  box-shadow: 0 8px 24px rgba(45,74,122,0.12);
+}
+.card .icon { font-size: 28px; }
+.card h3 { font-size: 18px; letter-spacing: -0.01em; }
+.card p { color: #777; font-size: 13px; }
+.card .hint { margin-top: auto; color: #2d4a7a; font-size: 12px; font-weight: 600; }
+
+.parts-list {
+  background: #fff; border: 1px solid #e8e4d8; border-radius: 14px;
+  padding: 20px; margin-top: 30px;
+}
+.parts-list h2 { font-size: 16px; margin-bottom: 12px; color: #555; }
+.parts-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 6px; font-size: 13px;
+}
+.parts-grid div { padding: 6px 10px; background: #faf5ec; border-radius: 6px; }
+.parts-grid .en { color: #888; font-size: 11px; }
+
+footer { text-align: center; color: #999; font-size: 12px; margin-top: 40px; }
+footer a { color: #2d4a7a; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="tag">뇌과학 완전 기초</div>
+    <h1>뇌 구조 학습</h1>
+    <div class="lead">핵심 15개 부위를 영어·한국어·한자어로 반복 학습합니다. 매일 1분씩만 돌려도 금방 입에 붙어요.</div>
+  </div>
+
+  <div class="grid">
+    <a class="card" href="drill.html">
+      <div class="icon">🔁</div>
+      <h3>드릴 모드</h3>
+      <p>1초씩 자동으로 넘어가며 부위를 훑어봅니다. 라운드마다 한글 → 영어 → 한자 순으로 정보가 쌓여요.</p>
+      <div class="hint">자동 반복 · 화면 보기만 해도 익혀짐 →</div>
+    </a>
+    <a class="card" href="study.html">
+      <div class="icon">🧠</div>
+      <h3>학습 · 플래시카드 · 퀴즈</h3>
+      <p>뇌 그림을 클릭해 상세 정보 보기 / 플래시카드로 이름 맞히기 / 10문제 퀴즈로 점검.</p>
+      <div class="hint">인터랙티브 학습 →</div>
+    </a>
+    <a class="card" href="shorts.html">
+      <div class="icon">📱</div>
+      <h3>쇼츠 (9:16)</h3>
+      <p>세로 프레임 자동 재생. 화면 녹화해서 쇼츠 영상으로 바로 만들 수 있습니다.</p>
+      <div class="hint">세로 영상 자동 재생 →</div>
+    </a>
+    <a class="card" href="script.md">
+      <div class="icon">📝</div>
+      <h3>내레이션 스크립트</h3>
+      <p>쇼츠용 5~8초 대본 15편, 시리즈 분할안, 반복 학습 루틴.</p>
+      <div class="hint">스크립트 보기 →</div>
+    </a>
+  </div>
+
+  <div class="parts-list">
+    <h2>핵심 15부위 · Core 15 Regions</h2>
+    <div class="parts-grid">
+      <div>전두엽 <span class="en">Frontal Lobe</span></div>
+      <div>두정엽 <span class="en">Parietal Lobe</span></div>
+      <div>측두엽 <span class="en">Temporal Lobe</span></div>
+      <div>후두엽 <span class="en">Occipital Lobe</span></div>
+      <div>소뇌 <span class="en">Cerebellum</span></div>
+      <div>뇌간 <span class="en">Brainstem</span></div>
+      <div>중뇌 <span class="en">Midbrain</span></div>
+      <div>교뇌 <span class="en">Pons</span></div>
+      <div>연수 <span class="en">Medulla</span></div>
+      <div>시상 <span class="en">Thalamus</span></div>
+      <div>시상하부 <span class="en">Hypothalamus</span></div>
+      <div>해마 <span class="en">Hippocampus</span></div>
+      <div>편도체 <span class="en">Amygdala</span></div>
+      <div>뇌량 <span class="en">Corpus Callosum</span></div>
+      <div>뇌하수체 <span class="en">Pituitary Gland</span></div>
+    </div>
+  </div>
+
+  <footer>
+    뇌 구조 학습 페이지 · 영어·한국어·한자 병기 · MIT License
+  </footer>
+</div>
+</body>
+</html>

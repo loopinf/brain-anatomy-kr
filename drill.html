@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>뇌 부위 드릴 · Brain Drill</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #fff; min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; padding: 20px;
+}
+.top-bar {
+  width: 100%; max-width: 900px; display: flex; justify-content: space-between;
+  align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px;
+}
+.title { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; }
+.title .sub { color: #8aa0c8; font-weight: 400; font-size: 13px; margin-left: 8px; }
+.controls { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.controls button, .controls select {
+  padding: 8px 14px; border: 1px solid #3a4a6a; background: #1e2a44;
+  color: #e0e8f0; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 500;
+}
+.controls button:hover { border-color: #6a8ab0; }
+.controls button.playing { background: #c94a4a; border-color: #c94a4a; color: #fff; }
+
+.stage {
+  width: 100%; max-width: 900px; background: #fff; color: #1e1e1e;
+  border-radius: 18px; padding: 28px; box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  display: flex; flex-direction: column;
+}
+.round-strip {
+  display: flex; gap: 8px; margin-bottom: 16px; justify-content: center; flex-wrap: wrap;
+}
+.round-chip {
+  padding: 5px 12px; border-radius: 999px; background: #f0ece1;
+  font-size: 12px; font-weight: 600; color: #8a7a5a;
+  transition: all 0.2s;
+}
+.round-chip.active { background: #2d4a7a; color: #fff; transform: scale(1.05); }
+
+.progress-track {
+  width: 100%; height: 4px; background: #eee; border-radius: 2px; overflow: hidden; margin-bottom: 14px;
+}
+.progress-fill { height: 100%; background: #2d4a7a; width: 0%; transition: width 0.08s linear; }
+
+.brain-wrap {
+  background: #faf5ec; border-radius: 14px; padding: 12px; margin-bottom: 18px;
+  aspect-ratio: 8 / 5.2; display: flex; align-items: center; justify-content: center;
+}
+.brain-wrap svg { width: 100%; height: 100%; max-height: 380px; }
+
+.label-stack { text-align: center; min-height: 150px; display: flex; flex-direction: column; justify-content: center; }
+.label-kr {
+  font-size: clamp(32px, 6vw, 52px); font-weight: 800; color: #1e1e1e;
+  letter-spacing: -0.02em; line-height: 1.1;
+  animation: popIn 0.4s ease-out;
+}
+.label-en {
+  font-size: clamp(20px, 3.5vw, 30px); font-weight: 700; color: #2d4a7a;
+  margin-top: 6px; letter-spacing: -0.01em;
+  animation: fadeIn 0.4s ease-out 0.1s both;
+}
+.label-hanja {
+  font-size: clamp(16px, 2.5vw, 22px); color: #8a7a5a; font-weight: 500;
+  margin-top: 6px;
+  animation: fadeIn 0.4s ease-out 0.2s both;
+}
+.counter {
+  text-align: center; color: #888; font-size: 12px; margin-top: 12px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+
+@keyframes popIn {
+  0% { opacity: 0; transform: translateY(8px) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(4px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.region { opacity: 0.18; transition: opacity 0.25s; }
+.region.highlight {
+  opacity: 1; stroke: #c94a4a; stroke-width: 3;
+  filter: drop-shadow(0 0 5px rgba(201, 74, 74, 0.6));
+  animation: pulse 1s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { filter: drop-shadow(0 0 3px rgba(201, 74, 74, 0.5)); }
+  50% { filter: drop-shadow(0 0 10px rgba(201, 74, 74, 0.9)); }
+}
+.label-text, .label-line { display: none; }
+.r-frontal{fill:#f4b5a2}.r-parietal{fill:#a2c9a8}.r-temporal{fill:#f0d78b}.r-occipital{fill:#b8a2d9}.r-cerebellum{fill:#e89bb8}.r-brainstem{fill:#c9a98a}.r-midbrain{fill:#d4b896}.r-pons{fill:#b89a78}.r-medulla{fill:#9c7e5e}.r-thalamus{fill:#87b5d4}.r-hypothalamus{fill:#6fa0c2}.r-hippocampus{fill:#e0a868}.r-amygdala{fill:#c94a4a}.r-corpus-callosum{fill:#d9d4c4}.r-pituitary{fill:#f588a8}
+.region-stroke { stroke: #5a4a3a; stroke-width: 1; }
+
+.hint { color: #8aa0c8; font-size: 12px; margin-top: 16px; text-align: center; max-width: 600px; }
+kbd { background:#2a3a54; padding:2px 6px; border-radius:4px; font-size:11px; color:#e0e8f0; }
+
+a.back { color: #8aa0c8; font-size: 13px; text-decoration: none; }
+a.back:hover { color: #fff; }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="title">뇌 부위 드릴 <span class="sub">반복하며 자동으로 이름이 올라옴</span></div>
+  <div class="controls">
+    <button id="playBtn">▶ 시작</button>
+    <button id="prevBtn">← 이전</button>
+    <button id="nextBtn">다음 →</button>
+    <select id="speedSel">
+      <option value="800">0.8초</option>
+      <option value="1000" selected>1초</option>
+      <option value="1500">1.5초</option>
+      <option value="2000">2초</option>
+    </select>
+  </div>
+</div>
+
+<div class="stage">
+  <div class="round-strip" id="roundStrip"></div>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="brain-wrap"><svg id="svg" viewBox="0 0 800 520"></svg></div>
+  <div class="label-stack" id="labelStack"></div>
+  <div class="counter" id="counter"></div>
+</div>
+
+<div class="hint">
+  <kbd>Space</kbd> 재생/정지 · <kbd>←</kbd> 이전 · <kbd>→</kbd> 다음 <br>
+  Round 1은 한글, Round 2는 한글+영어, Round 3은 한글+영어+한자. 끝나면 다시 Round 1로 돌아갑니다.
+</div>
+
+<script>
+const DATA = [
+  {id:"frontal",en:"Frontal Lobe",kr:"전두엽",hanja:"前頭葉",view:"lateral"},
+  {id:"parietal",en:"Parietal Lobe",kr:"두정엽",hanja:"頭頂葉",view:"lateral"},
+  {id:"temporal",en:"Temporal Lobe",kr:"측두엽",hanja:"側頭葉",view:"lateral"},
+  {id:"occipital",en:"Occipital Lobe",kr:"후두엽",hanja:"後頭葉",view:"lateral"},
+  {id:"cerebellum",en:"Cerebellum",kr:"소뇌",hanja:"小腦",view:"lateral"},
+  {id:"brainstem",en:"Brainstem",kr:"뇌간",hanja:"腦幹",view:"lateral"},
+  {id:"midbrain",en:"Midbrain",kr:"중뇌",hanja:"中腦",view:"sagittal"},
+  {id:"pons",en:"Pons",kr:"교뇌",hanja:"橋腦",view:"sagittal"},
+  {id:"medulla",en:"Medulla Oblongata",kr:"연수",hanja:"延髓",view:"sagittal"},
+  {id:"thalamus",en:"Thalamus",kr:"시상",hanja:"視床",view:"sagittal"},
+  {id:"hypothalamus",en:"Hypothalamus",kr:"시상하부",hanja:"視床下部",view:"sagittal"},
+  {id:"hippocampus",en:"Hippocampus",kr:"해마",hanja:"海馬",view:"sagittal"},
+  {id:"amygdala",en:"Amygdala",kr:"편도체",hanja:"扁桃體",view:"sagittal"},
+  {id:"corpus-callosum",en:"Corpus Callosum",kr:"뇌량",hanja:"腦梁",view:"sagittal"},
+  {id:"pituitary",en:"Pituitary Gland",kr:"뇌하수체",hanja:"腦下垂體",view:"sagittal"}
+];
+
+const ROUNDS = [
+  {name: 'Round 1 · 한국어', fields: ['kr']},
+  {name: 'Round 2 · + 영어', fields: ['kr','en']},
+  {name: 'Round 3 · + 한자', fields: ['kr','en','hanja']}
+];
+
+const LATERAL_SVG = `
+<g stroke="#5a4a3a" stroke-width="1.5" fill="none">
+  <path d="M 90,280 C 90,170 180,85 360,80 C 540,80 680,150 700,270 C 710,340 680,400 590,410 L 260,410 C 150,410 90,360 90,280 Z" fill="#faf5ec"/>
+  <path d="M 180,300 C 260,280 340,290 460,305 C 520,315 560,330 600,350" stroke-width="1.2"/>
+  <path d="M 350,85 C 360,180 370,260 400,300" stroke-width="1.2"/>
+  <path d="M 560,110 C 560,200 580,290 600,340" stroke-width="1.2"/>
+</g>
+<path class="region r-frontal region-stroke" data-id="frontal" d="M 90,280 C 90,170 180,85 350,82 C 360,180 370,260 395,300 C 340,305 270,300 200,305 C 150,305 110,300 90,285 Z"/>
+<path class="region r-parietal region-stroke" data-id="parietal" d="M 350,82 C 450,80 540,90 560,110 C 560,200 580,290 595,335 C 550,320 470,310 400,300 C 370,260 360,180 350,82 Z"/>
+<path class="region r-occipital region-stroke" data-id="occipital" d="M 560,110 C 640,130 695,190 700,270 C 700,310 685,340 660,360 C 640,355 615,348 595,335 C 580,290 560,200 560,110 Z"/>
+<path class="region r-temporal region-stroke" data-id="temporal" d="M 200,305 C 270,300 340,305 395,300 C 420,320 460,345 510,360 C 530,380 530,405 510,412 L 280,412 C 220,410 180,380 170,340 C 170,325 185,310 200,305 Z"/>
+<path class="region r-cerebellum region-stroke" data-id="cerebellum" d="M 560,370 C 620,360 685,370 700,410 C 695,450 650,475 590,475 C 540,475 505,450 510,415 C 515,395 535,378 560,370 Z"/>
+<path class="region r-brainstem region-stroke" data-id="brainstem" d="M 470,405 L 530,405 L 535,490 Q 500,505 465,490 Z"/>`;
+const SAGITTAL_SVG = `
+<g stroke="#5a4a3a" stroke-width="1.5" fill="none">
+  <path d="M 90,270 C 90,160 190,75 370,70 C 560,70 690,145 710,265 C 720,340 685,395 595,405 L 260,405 C 150,405 90,355 90,275 Z" fill="#faf5ec"/>
+</g>
+<path d="M 92,275 C 92,165 192,80 370,75 C 550,75 682,150 702,265 L 600,270 L 430,230 L 280,245 L 160,230 Z" fill="#f7f1e4" stroke="#d4c9a8" stroke-width="0.6"/>
+<path class="region r-corpus-callosum region-stroke" data-id="corpus-callosum" d="M 250,190 Q 220,140 290,120 Q 400,100 500,115 Q 580,130 560,185 Q 540,225 460,210 Q 380,195 320,205 Q 265,215 250,190 Z"/>
+<ellipse class="region r-thalamus region-stroke" data-id="thalamus" cx="370" cy="260" rx="55" ry="32"/>
+<path class="region r-hypothalamus region-stroke" data-id="hypothalamus" d="M 340,290 Q 370,305 400,290 Q 410,315 380,325 Q 355,330 335,320 Q 325,305 340,290 Z"/>
+<ellipse class="region r-pituitary region-stroke" data-id="pituitary" cx="365" cy="345" rx="14" ry="11"/>
+<line x1="365" y1="328" x2="365" y2="338" stroke="#5a4a3a" stroke-width="1.5"/>
+<path class="region r-hippocampus region-stroke" data-id="hippocampus" d="M 240,330 Q 220,360 255,385 Q 295,395 320,375 Q 305,355 285,350 Q 265,345 260,340 Q 250,332 240,330 Z"/>
+<ellipse class="region r-amygdala region-stroke" data-id="amygdala" cx="230" cy="325" rx="14" ry="12"/>
+<path class="region r-midbrain region-stroke" data-id="midbrain" d="M 430,290 Q 465,285 470,315 Q 465,335 435,335 Q 420,320 430,290 Z"/>
+<path class="region r-pons region-stroke" data-id="pons" d="M 430,335 Q 475,335 480,370 Q 470,395 430,395 Q 415,370 430,335 Z"/>
+<path class="region r-medulla region-stroke" data-id="medulla" d="M 430,395 Q 470,395 470,440 Q 460,470 430,470 Q 415,440 430,395 Z"/>
+<path class="region r-cerebellum region-stroke" data-id="cerebellum" d="M 490,330 Q 600,320 680,370 Q 685,420 625,445 Q 555,450 510,430 Q 480,395 490,330 Z"/>`;
+
+let roundIdx = 0, partIdx = 0, playing = false, timer = null, startTime = 0, duration = 1000;
+
+function renderRoundStrip() {
+  document.getElementById('roundStrip').innerHTML = ROUNDS.map((r,i) =>
+    `<div class="round-chip ${i===roundIdx?'active':''}">${r.name}</div>`
+  ).join('');
+}
+function render() {
+  const item = DATA[partIdx];
+  const round = ROUNDS[roundIdx];
+  document.getElementById('svg').innerHTML = item.view === 'lateral' ? LATERAL_SVG : SAGITTAL_SVG;
+  document.getElementById('svg').querySelectorAll(`.region[data-id="${item.id}"]`).forEach(el => el.classList.add('highlight'));
+  let html = '';
+  if (round.fields.includes('kr')) html += `<div class="label-kr">${item.kr}</div>`;
+  if (round.fields.includes('en')) html += `<div class="label-en">${item.en}</div>`;
+  if (round.fields.includes('hanja')) html += `<div class="label-hanja">${item.hanja}</div>`;
+  document.getElementById('labelStack').innerHTML = html;
+  document.getElementById('counter').textContent = `${partIdx+1} / ${DATA.length}`;
+  renderRoundStrip();
+  document.getElementById('progressFill').style.width = '0%';
+  if (playing) { startTime = Date.now(); animateProgress(); }
+}
+function animateProgress() {
+  if (!playing) return;
+  const elapsed = Date.now() - startTime;
+  const pct = Math.min(100, (elapsed / duration) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  if (pct < 100) requestAnimationFrame(animateProgress);
+}
+function step() {
+  partIdx++;
+  if (partIdx >= DATA.length) {
+    partIdx = 0;
+    roundIdx = (roundIdx + 1) % ROUNDS.length;
+  }
+  render();
+}
+function prev() {
+  partIdx--;
+  if (partIdx < 0) {
+    partIdx = DATA.length - 1;
+    roundIdx = (roundIdx - 1 + ROUNDS.length) % ROUNDS.length;
+  }
+  render();
+}
+function play() {
+  playing = !playing;
+  const btn = document.getElementById('playBtn');
+  if (playing) {
+    btn.textContent = '⏸ 일시정지'; btn.classList.add('playing');
+    startTime = Date.now(); animateProgress();
+    timer = setInterval(step, duration);
+  } else {
+    btn.textContent = '▶ 시작'; btn.classList.remove('playing');
+    clearInterval(timer);
+    document.getElementById('progressFill').style.width = '0%';
+  }
+}
+document.getElementById('playBtn').addEventListener('click', play);
+document.getElementById('nextBtn').addEventListener('click', () => {
+  if (playing) { clearInterval(timer); timer = setInterval(step, duration); }
+  step(); if (playing) startTime = Date.now();
+});
+document.getElementById('prevBtn').addEventListener('click', () => {
+  if (playing) { clearInterval(timer); timer = setInterval(step, duration); }
+  prev(); if (playing) startTime = Date.now();
+});
+document.getElementById('speedSel').addEventListener('change', e => {
+  duration = parseInt(e.target.value);
+  if (playing) { clearInterval(timer); timer = setInterval(step, duration); startTime = Date.now(); }
+});
+document.addEventListener('keydown', e => {
+  if (e.key === ' ') { e.preventDefault(); play(); }
+  if (e.key === 'ArrowRight') document.getElementById('nextBtn').click();
+  if (e.key === 'ArrowLeft') document.getElementById('prevBtn').click();
+});
+render();
+</script>
+</body>
+</html>
