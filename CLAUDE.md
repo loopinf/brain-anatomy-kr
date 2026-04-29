@@ -32,6 +32,7 @@ The site is four self-contained pages plus a script doc and a JSON file. Each HT
 | `study.html` | 3 tabs: Learn (clickable SVG + info panel), Flashcard, 10-question Quiz | Full DATA[15] + both SVGs (with leader-line labels) |
 | `shorts.html` | 9:16 vertical auto-player for screen recording into TikTok/Shorts/Reels | DATA[15] (with `desc` field instead of `function`/`location`/`etymology`) + both SVGs |
 | `data.json` | Canonical reference dataset (8 fields per region) | **Not loaded by any page** — documentation only |
+| `data/hypothalamus-feeding.json` | Deep-dive: hypothalamic feeding circuit (VMH/LH/ARC/PVN nuclei + hormones + fasting/satiety pathways). Includes per-term `morphemes[]` for future word-part drills. **Not yet wired to any UI.** | — |
 | `script.md` | Korean narration scripts (5–8s per region) for shorts.html voiceover | — |
 
 ### The duplication you must respect
@@ -63,3 +64,12 @@ The `view` field (`"lateral"`, `"sagittal"`, or `"both"`) determines which SVG r
 - Fonts: rely on system stack (`-apple-system`, `Apple SD Gothic Neo`, `Noto Sans KR`). Don't add web font dependencies.
 - Color accent across pages: `#2d4a7a` (navy) for primary, `#c94a4a` (red) for highlight/active state, `#faf8f3`/`#faf5ec` for warm backgrounds.
 - Keep pages dependency-free — no frameworks, no bundlers, no npm. The repo `.gitignore` lists `node_modules/` defensively but there is no package.json.
+
+## In-flight direction (not yet built)
+
+The user's longer-term goal is to extend this from a flat 15-region site into a richer learning tool:
+- **Spaced repetition (Anki-style)** review of facts derived from the data files.
+- **Morpheme drills** — surfacing what `hypo-`, `ventro-`, `dorsal`, `arcuate`, etc. mean and reusing those across terms.
+- **Region deep-dives** — sub-region/nucleus/hormone level detail (e.g. the hypothalamus feeding circuit), accumulated topic-by-topic.
+
+Data is being added before UI. When extending: keep deep-dive datasets in `data/<region>-<topic>.json`, include `morphemes[]` arrays on terms that have learnable word parts, and don't yet retrofit pages — confirm with the user before wiring data into HTML, since the duplicated-DATA architecture means each integration touches multiple files.

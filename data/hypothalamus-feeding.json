@@ -1,0 +1,162 @@
+{
+  "region_id": "hypothalamus",
+  "topic": "feeding-circuit",
+  "title_kr": "시상하부와 배고픔·포만 회로",
+  "title_en": "Hypothalamus & Hunger–Satiety Circuit",
+  "summary_kr": "공복 → 그렐린 ↑ → ARC의 AgRP/NPY 활성 → LH 자극 → 식사. 식사 → 렙틴/인슐린/PYY ↑ → ARC의 POMC 활성 → VMH/PVN 활성 → 포만.",
+
+  "nuclei": [
+    {
+      "id": "vmh",
+      "abbr": "VMH",
+      "en": "Ventromedial Hypothalamus",
+      "kr": "복내측 시상하부",
+      "hanja": "腹內側 視床下部",
+      "role_kr": "포만 중추",
+      "role_en": "satiety center",
+      "function_kr": "음식을 충분히 먹으면 활성화되어 '그만 먹어' 신호를 보냄.",
+      "lesion_kr": "VMH 손상 → 폭식 + 비만 (VMH syndrome)",
+      "key_receptors": ["leptin receptor"],
+      "morphemes": [
+        { "part": "ventro-", "kr": "앞쪽·배쪽", "en": "front / belly side" },
+        { "part": "medial",  "kr": "안쪽·가운데", "en": "toward midline" }
+      ]
+    },
+    {
+      "id": "lh",
+      "abbr": "LH",
+      "en": "Lateral Hypothalamus",
+      "kr": "외측 시상하부",
+      "hanja": "外側 視床下部",
+      "role_kr": "섭식 중추",
+      "role_en": "feeding center",
+      "function_kr": "활성화되면 '먹어라' 신호를 보냄.",
+      "lesion_kr": "LH 손상 → 식욕 상실, 체중 감소",
+      "key_neurons": ["orexin (hypocretin) neurons"],
+      "morphemes": [
+        { "part": "lateral", "kr": "옆쪽·바깥쪽", "en": "side / away from midline" }
+      ]
+    },
+    {
+      "id": "arc",
+      "abbr": "ARC",
+      "en": "Arcuate Nucleus",
+      "kr": "활꼴핵",
+      "hanja": "弓狀核",
+      "role_kr": "혈중 호르몬 감지 허브",
+      "role_en": "hormone-sensing hub",
+      "function_kr": "혈뇌장벽(BBB)이 약한 영역. 혈중 호르몬을 직접 감지해 두 길항 뉴런 집단을 통해 식욕을 조절.",
+      "antagonistic_neurons": [
+        {
+          "id": "agrp-npy",
+          "name": "AgRP/NPY 뉴런",
+          "drive": "배고픔 촉진",
+          "responds_to": ["ghrelin"]
+        },
+        {
+          "id": "pomc-cart",
+          "name": "POMC/CART 뉴런",
+          "drive": "포만감 촉진",
+          "responds_to": ["leptin", "insulin"]
+        }
+      ],
+      "morphemes": [
+        { "part": "arcuate", "kr": "활 모양", "en": "arch-shaped (Latin arcus = bow)" }
+      ]
+    },
+    {
+      "id": "pvn",
+      "abbr": "PVN",
+      "en": "Paraventricular Nucleus",
+      "kr": "실방핵",
+      "hanja": "室傍核",
+      "role_kr": "통합 출력 허브",
+      "role_en": "integrative output hub",
+      "function_kr": "ARC에서 받은 신호를 통합해 자율신경계와 내분비계로 출력.",
+      "morphemes": [
+        { "part": "para-",       "kr": "옆·곁",   "en": "beside / next to" },
+        { "part": "ventricular", "kr": "뇌실의",  "en": "of the ventricle" }
+      ]
+    }
+  ],
+
+  "hormones": [
+    {
+      "id": "ghrelin",
+      "name_en": "Ghrelin",
+      "name_kr": "그렐린",
+      "source_kr": "위 (공복 시 분비)",
+      "effect_kr": "배고픔 ↑ — AgRP 자극",
+      "timing": "short-term",
+      "direction": "orexigenic"
+    },
+    {
+      "id": "leptin",
+      "name_en": "Leptin",
+      "name_kr": "렙틴",
+      "source_kr": "지방세포",
+      "effect_kr": "포만감 ↑ — POMC 자극, AgRP 억제",
+      "timing": "long-term",
+      "direction": "anorexigenic"
+    },
+    {
+      "id": "insulin",
+      "name_en": "Insulin",
+      "name_kr": "인슐린",
+      "source_kr": "췌장",
+      "effect_kr": "장기적 포만 신호",
+      "timing": "long-term",
+      "direction": "anorexigenic"
+    },
+    {
+      "id": "pyy",
+      "name_en": "Peptide YY",
+      "name_kr": "PYY",
+      "source_kr": "장 (식후 분비)",
+      "effect_kr": "단기 포만 신호",
+      "timing": "short-term",
+      "direction": "anorexigenic"
+    },
+    {
+      "id": "glp1",
+      "name_en": "GLP-1",
+      "name_kr": "GLP-1 (글루카곤 유사 펩타이드-1)",
+      "source_kr": "장 (식후 분비)",
+      "effect_kr": "단기 포만 신호",
+      "timing": "short-term",
+      "direction": "anorexigenic"
+    },
+    {
+      "id": "cck",
+      "name_en": "Cholecystokinin",
+      "name_kr": "CCK",
+      "source_kr": "장 (식후 분비)",
+      "effect_kr": "단기 포만 신호",
+      "timing": "short-term",
+      "direction": "anorexigenic"
+    }
+  ],
+
+  "circuit": {
+    "fasting": {
+      "label_kr": "공복 회로 (먹게 만드는 흐름)",
+      "steps": [
+        "공복 상태",
+        "위에서 그렐린 ↑",
+        "ARC의 AgRP/NPY 뉴런 활성",
+        "LH (외측 시상하부) 자극",
+        "식사 행동 개시"
+      ]
+    },
+    "satiety": {
+      "label_kr": "포만 회로 (그만 먹게 만드는 흐름)",
+      "steps": [
+        "식사 후",
+        "렙틴 / 인슐린 / PYY ↑",
+        "ARC의 POMC/CART 뉴런 활성",
+        "VMH 및 PVN 활성",
+        "포만감"
+      ]
+    }
+  }
+}
