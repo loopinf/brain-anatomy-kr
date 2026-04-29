@@ -69,29 +69,52 @@ see_also: [lh, arc, leptin]
   > 💡 '이마 = 생각'
   ```
 
-## 위키링크
+## 링크
 
-- 다른 페이지 참조는 `[[id]]`. 표시 라벨 바꾸려면 `[[id|보일 글자]]`.
-  - `[[vmh]]`, `[[leptin]]`
-  - `[[hypo|hypo-]]`, `[[ventral|ventro-]]`
-- frontmatter의 `parent`, `see_also`, `tags`는 빌드 때 자동 backlink로
-  역참조됩니다. 본문에서 일일이 안 적어도, 예컨대 `morphemes/hypo.md` 하단에
-  hypo를 쓴 모든 용어가 자동으로 모입니다.
-- **깨진 링크는 정상.** 아직 안 만든 페이지로 가는 `[[]]`는 곧 만들어야 한다는
-  TODO 신호로 운영합니다.
+**표준 마크다운 링크**만 사용한다: `[보일 글자](상대경로.md)`. Obsidian의
+`[[id]]` 위키링크는 **쓰지 않는다** — GitHub 레포 뷰와 GitHub Pages(Jekyll
+기본)에서 평문으로 깨져 표시되기 때문.
+
+```markdown
+시상([thalamus](thalamus.md)) 바로 아래에 [VMH](../nuclei/vmh.md)와
+[LH](../nuclei/lh.md)가 있다. 자세히는 [hypothalamic-feeding](../circuits/hypothalamic-feeding.md) 참고.
+```
+
+상대경로 규칙 (현재 디렉토리 기준):
+
+| 출발 → 도착 | 경로 |
+|---|---|
+| `regions/X.md` → `regions/Y.md` | `Y.md` |
+| `regions/X.md` → `nuclei/Y.md` | `../nuclei/Y.md` |
+| `nuclei/X.md` → `nuclei/Y.md` | `Y.md` |
+| `nuclei/X.md` → `regions/Y.md` | `../regions/Y.md` |
+| `nuclei/X.md` → `morphemes/Y.md` | `../morphemes/Y.md` |
+| `nuclei/X.md` → `molecules/Y.md` | `../molecules/Y.md` |
+
+라벨은 본문 흐름에 맞는 것을 자유롭게 사용 — 한국어 이름(`[시상하부](...)`),
+약어(`[VMH](...)`), 형태소 그대로(`[hypo-](...)`) 모두 OK. 동일 페이지 안에서
+여러 번 링크해도 무방.
+
+frontmatter의 `parent`, `see_also`, `tags`는 빌드 때 자동 backlink로 역참조됩니다
+(예: `morphemes/hypo.md` 하단에 hypo를 쓴 모든 용어가 자동 모임). 본문에서 일일이
+역참조를 안 적어도 됩니다.
+
+**깨진 링크는 정상.** 아직 안 만든 페이지로 가는 링크는 곧 만들어야 한다는 TODO
+신호로 운영합니다.
 
 ## 작성 흐름
 
 1. 새 개념 → 어느 폴더에 들어갈지 결정 (region / nucleus / molecule / morpheme / circuit).
 2. `id`를 정하고 같은 이름의 .md 생성.
 3. frontmatter → 산문 본문 → `## 같이 보는 항목` 순서.
-4. 다른 페이지에서 새 개념을 언급하면 `[[id]]`로 링크.
+4. 다른 페이지에서 새 개념을 언급하면 `[라벨](상대경로.md)`로 링크.
 
 ## 아직 없는 것 (의도적으로 미룸)
 
 - 빌드 스크립트 (`wiki/` → `data.json` / HTML DATA 동기화).
 - frontmatter 검증 (`kind`별 필수 필드 체크).
 - SRS 카드 추출기 (각 .md에서 카드 후보를 뽑는 룰).
+- GitHub Pages용 SSG 결정 (MkDocs / Quartz / Jekyll wikilinks 플러그인 등).
 
 이것들은 페이지가 어느 정도 쌓인 뒤 한 번에 짭니다. 그 전까지 `data.json`과
 `data/*.json`이 wiki와 잠시 병행하지만, **수정은 wiki에서만**.
