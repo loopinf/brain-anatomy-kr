@@ -1,0 +1,37 @@
+# Jekyll config for GitHub Pages.
+# Existing root pages (index.html, drill.html, study.html, shorts.html) have no
+# YAML frontmatter, so Jekyll passes them through untouched. Only files under
+# wiki/ get the custom layout applied.
+
+title: "뇌 anatomy wiki"
+description: "뇌 구조 학습 위키 — 영어·한국어·한자 병기, 해부와 회로의 미니 위키"
+
+# Apply the wiki layout only to markdown pages under wiki/
+defaults:
+  - scope:
+      path: "wiki"
+    values:
+      layout: "wiki"
+
+# These plugins are on the GitHub Pages whitelist; declaring them explicitly
+# documents the dependency.
+plugins:
+  - jekyll-relative-links   # rewrites [foo](bar.md) to bar.html in output
+  - jekyll-readme-index     # serves wiki/README.md at /wiki/
+
+relative_links:
+  enabled: true
+  collections: false
+
+readme_index:
+  enabled: true
+  remove_originals: false
+
+# Don't process the data files / source HTML pages with kramdown.
+exclude:
+  - README.md
+  - LICENSE
+  - script.md
+  - data.json
+  - data/
+  - CLAUDE.md

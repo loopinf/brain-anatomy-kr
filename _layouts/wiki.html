@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if page.kr %}{{ page.kr }}{% if page.en %} · {{ page.en }}{% endif %}{% else %}{{ page.title | default: page.id | default: "wiki" }}{% endif %} · 뇌 anatomy wiki</title>
+{% if page.en %}<meta name="description" content="{{ page.en }}{% if page.hanja %} · {{ page.hanja }}{% endif %}{% if page.category %} · {{ page.category }}{% endif %}">{% endif %}
+<link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+<div class="wiki-shell">
+
+<nav class="wiki-nav">
+  <a href="{{ '/' | relative_url }}">← 뇌 학습 사이트</a>
+  <span class="sep">·</span>
+  <a href="{{ '/wiki/' | relative_url }}">wiki 홈</a>
+  {% if page.kind and page.id != 'README' %}
+  <span class="sep">·</span>
+  <span class="crumb">{{ page.kind }}</span>
+  {% endif %}
+</nav>
+
+{% if page.kind and page.kind != 'index' %}
+<aside class="wiki-meta">
+  <dl>
+    {% if page.kr %}<div><dt>한국어</dt><dd>{{ page.kr }}</dd></div>{% endif %}
+    {% if page.en %}<div><dt>English</dt><dd>{{ page.en }}</dd></div>{% endif %}
+    {% if page.hanja %}<div><dt>漢字</dt><dd class="hanja">{{ page.hanja }}</dd></div>{% endif %}
+    {% if page.abbr %}<div><dt>약어</dt><dd>{{ page.abbr }}</dd></div>{% endif %}
+    {% if page.kind %}<div><dt>kind</dt><dd><span class="pill pill-{{ page.kind }}">{{ page.kind }}</span></dd></div>{% endif %}
+    {% if page.parent %}<div><dt>상위</dt><dd><a href="{{ '/wiki/regions/' | append: page.parent | append: '.html' | relative_url }}">{{ page.parent }}</a></dd></div>{% endif %}
+    {% if page.category %}<div><dt>분류</dt><dd>{{ page.category }}</dd></div>{% endif %}
+    {% if page.tags %}<div class="tags-row"><dt>tags</dt><dd>{% for t in page.tags %}<span class="tag">{{ t }}</span>{% endfor %}</dd></div>{% endif %}
+  </dl>
+</aside>
+{% endif %}
+
+<article class="wiki-article">
+{{ content }}
+</article>
+
+<footer class="wiki-footer">
+  <div>뇌 구조 학습 wiki · 한국어·영어·漢字 병기</div>
+  <div>
+    <a href="https://github.com/loopinf/brain-anatomy-kr/blob/main/{{ page.path }}">소스 보기</a>
+    <span class="sep">·</span>
+    <a href="https://github.com/loopinf/brain-anatomy-kr">repo</a>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
