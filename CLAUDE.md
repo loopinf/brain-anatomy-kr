@@ -73,3 +73,9 @@ The user's longer-term goal is to extend this from a flat 15-region site into a 
 - **Region deep-dives** — sub-region/nucleus/hormone level detail (e.g. the hypothalamus feeding circuit), accumulated topic-by-topic.
 
 Data is being added before UI. When extending: keep deep-dive datasets in `data/<region>-<topic>.json`, include `morphemes[]` arrays on terms that have learnable word parts, and don't yet retrofit pages — confirm with the user before wiring data into HTML, since the duplicated-DATA architecture means each integration touches multiple files.
+
+### `wiki/` — markdown-first canonical layer (WIP, seeded)
+
+Experiment in progress: a Karpathy-style LLM-friendly markdown wiki under `wiki/` is being seeded as the **canonical knowledge source**. See `wiki/README.md` for conventions (frontmatter schema, `[[id]]` wikilinks, file = one concept). Currently only three pages exist as a tone/convention check (`wiki/README.md`, `wiki/regions/hypothalamus.md`, `wiki/nuclei/vmh.md`); the wiki is **not yet load-bearing** and `data.json` / `data/*.json` are still hand-maintained alongside it.
+
+The intended end state: `data.json`, `data/*.json`, and the inline `DATA` arrays in each HTML page all become derived build artifacts generated from `wiki/`, eliminating the 4–5-place duplication described above. Until that build exists, do not split changes between wiki and the legacy data files — confirm with the user which is the source for any given edit.
