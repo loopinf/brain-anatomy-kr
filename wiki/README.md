@@ -1,3 +1,9 @@
+---
+id: README
+kind: index
+title: 뇌 anatomy wiki
+---
+
 # Brain anatomy wiki
 
 이 폴더는 이 프로젝트의 **1차 진실(canonical source)** 입니다.
@@ -95,9 +101,15 @@ see_also: [lh, arc, leptin]
 약어(`[VMH](...)`), 형태소 그대로(`[hypo-](...)`) 모두 OK. 동일 페이지 안에서
 여러 번 링크해도 무방.
 
-frontmatter의 `parent`, `see_also`, `tags`는 빌드 때 자동 backlink로 역참조됩니다
-(예: `morphemes/hypo.md` 하단에 hypo를 쓴 모든 용어가 자동 모임). 본문에서 일일이
-역참조를 안 적어도 됩니다.
+frontmatter의 `parent`와 `see_also`는 GitHub Pages 빌드 때 **자동 역참조**로
+풀립니다 — 모든 페이지 하단에 "역참조 · Backlinks" 섹션이 자동 생성되고,
+이 페이지를 가리키는 다른 모든 위키 항목이 kind별로 묶여 나타납니다. 그래서
+한 곳에서 `see_also: [lh]`라고 적으면 lh 페이지에도 자동으로 이쪽 링크가 붙습니다.
+
+이 동작 덕분에 본문에서 일일이 "이 페이지를 가리키는 페이지" 리스트를 적어둘
+필요가 없습니다 — 자동으로 모입니다. 단, **링크하는 쪽 frontmatter의 `see_also`에
+대상 id를 넣어두는 것**이 backlink가 모이는 조건입니다 (본문에서만 링크하고
+frontmatter에 안 적으면 자동 수집에서 빠짐).
 
 **깨진 링크는 정상.** 아직 안 만든 페이지로 가는 링크는 곧 만들어야 한다는 TODO
 신호로 운영합니다.

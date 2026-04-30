@@ -39,6 +39,44 @@
 {{ content }}
 </article>
 
+{%- comment -%}
+  Auto-backlinks: collect every wiki page whose frontmatter `parent`
+  or `see_also` references this page's id, group by kind, render as
+  a clean list. Skipped on the README index and on pages without an id.
+{%- endcomment -%}
+{%- assign current_id = page.id -%}
+{%- if current_id and current_id != 'README' -%}
+{%- capture backlinks_html -%}
+  {%- for kind in 'region,nucleus,molecule,morpheme,circuit' | split: ',' -%}
+    {%- assign group = site.pages | where: 'kind', kind | sort: 'id' -%}
+    {%- capture group_items -%}
+      {%- for p in group -%}
+        {%- if p.id != current_id -%}
+          {%- assign hit = false -%}
+          {%- if p.parent == current_id -%}{%- assign hit = true -%}{%- endif -%}
+          {%- if p.see_also contains current_id -%}{%- assign hit = true -%}{%- endif -%}
+          {%- if hit -%}
+            <li><a href="{{ p.url | relative_url }}">{{ p.kr | default: p.id }}</a>{% if p.abbr %} <span class="bl-abbr">({{ p.abbr }})</span>{% endif %}{% if p.en %} <span class="bl-en">· {{ p.en }}</span>{% endif %}</li>
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+    {%- assign group_items_t = group_items | strip -%}
+    {%- if group_items_t != '' -%}
+      <div class="bl-group"><h3 class="bl-kind"><span class="pill pill-{{ kind }}">{{ kind }}</span></h3><ul class="bl-list">{{ group_items }}</ul></div>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- assign backlinks_t = backlinks_html | strip -%}
+{%- if backlinks_t != '' -%}
+<section class="wiki-backlinks">
+  <h2>역참조 · Backlinks</h2>
+  <p class="bl-help">이 페이지를 frontmatter (<code>parent</code> 또는 <code>see_also</code>)에서 가리키는 다른 위키 항목 — 자동 수집.</p>
+  {{ backlinks_html }}
+</section>
+{%- endif -%}
+{%- endif -%}
+
 <footer class="wiki-footer">
   <div>뇌 구조 학습 wiki · 한국어·영어·漢字 병기</div>
   <div>

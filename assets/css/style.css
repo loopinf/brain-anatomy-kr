@@ -224,6 +224,77 @@ body {
   margin: 40px 0;
 }
 
+/* ---------- Auto-backlinks ---------- */
+.wiki-backlinks {
+  margin-top: 56px;
+  padding: 28px 28px 24px;
+  background: var(--bg-meta);
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+}
+.wiki-backlinks > h2 {
+  font-family: "Noto Serif KR", "Apple SD Gothic Neo", "Iowan Old Style",
+               "Charter", "Times New Roman", serif;
+  font-size: 17px;
+  font-weight: 600;
+  margin: 0 0 4px;
+  color: var(--text);
+  letter-spacing: -0.005em;
+  border-bottom: 0;
+  padding: 0;
+}
+.wiki-backlinks .bl-help {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin: 0 0 18px;
+  line-height: 1.55;
+}
+.wiki-backlinks .bl-help code {
+  background: rgba(255,255,255,0.6);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+.wiki-backlinks .bl-group { margin: 14px 0 6px; }
+.wiki-backlinks .bl-group:first-of-type { margin-top: 0; }
+.wiki-backlinks .bl-kind {
+  margin: 0 0 8px;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  border-bottom: 0;
+  padding: 0;
+}
+.wiki-backlinks .bl-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 4px 16px;
+}
+.wiki-backlinks .bl-list li {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.wiki-backlinks .bl-list a {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+.wiki-backlinks .bl-list a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent-soft);
+}
+.wiki-backlinks .bl-abbr,
+.wiki-backlinks .bl-en {
+  color: var(--text-muted);
+  font-size: 12.5px;
+  font-weight: 400;
+}
+
 /* ---------- Footer ---------- */
 .wiki-footer {
   margin-top: 60px;
