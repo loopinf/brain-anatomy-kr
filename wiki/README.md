@@ -2,6 +2,7 @@
 id: README
 kind: index
 title: 뇌 anatomy wiki
+permalink: /wiki/
 ---
 
 # Brain anatomy wiki
@@ -15,6 +16,16 @@ title: 뇌 anatomy wiki
 스타일은 Karpathy 식 LLM-friendly markdown wiki — **사람이 읽기 좋고**
 **LLM이 한 페이지만 읽어도 맥락이 잡히는** 산문 위주. 스키마 단편 모음이
 아니라 미니 위키로 운영합니다.
+
+## 현재 위키에 있는 페이지
+
+(Jekyll 빌드 시 frontmatter에서 자동 수집됨)
+
+{% for kind in 'region,nucleus,molecule,morpheme,circuit' | split: ',' %}{% assign group = site.pages | where: 'kind', kind | sort: 'id' %}{% if group.size > 0 %}
+### {{ kind }} ({{ group.size }})
+{% for p in group %}
+- [{{ p.kr | default: p.id }}]({{ p.url | relative_url }}){% if p.abbr %} ({{ p.abbr }}){% endif %}{% if p.en %} — {{ p.en }}{% endif %}{% endfor %}
+{% endif %}{% endfor %}
 
 ## 디렉토리
 
