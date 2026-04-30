@@ -7,6 +7,7 @@ hanja: 脊髓 後角
 tags: [pain, sensory, spinal-cord, gate-control]
 see_also:
   - substance-p
+  - glutamate
   - rvm
   - ascending-pain-pathway
   - descending-pain-modulation
@@ -36,7 +37,7 @@ see_also:
 ## 통증 회로에서의 역할
 
 ### 상행 입력
-- A-δ·C 섬유의 [substance P](../molecules/substance-p.md)와 글루타메이트 → 2차 신경원 흥분 → 반대편으로 건너가 [STT](../circuits/ascending-pain-pathway.md) 따라 위로.
+- A-δ·C 섬유의 [substance P](../molecules/substance-p.md)와 [글루타메이트](../molecules/glutamate.md) → 2차 신경원 흥분 → 반대편으로 건너가 [STT](../circuits/ascending-pain-pathway.md) 따라 위로.
 
 ### 하행 차단
 - [RVM](rvm.md)에서 내려온 세로토닌·노르에피네프린이 1차 신경원의 substance P 분비를 억제.

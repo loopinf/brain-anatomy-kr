@@ -15,6 +15,7 @@ see_also:
   - arc
   - pvn
   - hypothalamic-feeding
+  - histamine
   - hypo
 ---
 
