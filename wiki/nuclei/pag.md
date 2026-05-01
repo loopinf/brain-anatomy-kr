@@ -12,6 +12,9 @@ see_also:
   - endorphin
   - descending-pain-modulation
   - ascending-pain-pathway
+  - amygdala
+  - cea
+  - fear-circuit
 ---
 
 # 수도주위회색질 · Periaqueductal Gray · PAG
@@ -31,7 +34,7 @@ see_also:
 
 - **하행 통증 조절의 사령탑**: PAG → [RVM](rvm.md) → 척수 후각으로 신호를 내려 통증 시냅스를 차단한다. 자세히는 [descending-pain-modulation](../circuits/descending-pain-modulation.md).
 - **내인성 아편 회로의 중심**: μ 아편 수용체가 풍부. 모르핀이 여기서 진통을 일으킴.
-- **방어 행동(defensive behavior)**: 영역마다 다른 방어 반응을 출력 — 동결(freezing), 도주(flight), 능동 회피(active defense). 공포·위협 처리에서 편도체(amygdala)와 단단히 연결 (편도체 페이지 미작성).
+- **방어 행동(defensive behavior)**: 영역마다 다른 방어 반응을 출력 — 동결(freezing), 도주(flight), 능동 회피(active defense). 공포·위협 처리에서 [편도체](../regions/amygdala.md)([CeA](cea.md))와 단단히 연결 — [fear-circuit](../circuits/fear-circuit.md) 참고.
 
 ## 임상
 

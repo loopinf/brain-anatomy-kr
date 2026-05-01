@@ -12,6 +12,10 @@ see_also:
   - gaba
   - dorsal-horn
   - substance-p
+  - hippocampus
+  - ca1
+  - ca3
+  - trisynaptic-circuit
 ---
 
 # 글루타메이트 (글루탐산) · Glutamate
