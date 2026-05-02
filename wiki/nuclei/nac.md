@@ -23,6 +23,11 @@ see_also:
 "이거 좋다, 또 하자"를 출력하는 **보상 회로의 중심 노드**. 모든 중독성 약물의
 공통 종착지.
 
+## 도식
+
+{% include diagrams/nuc-nac.html %}
+
+
 ## 위치
 
 - 전뇌(forebrain) 기저부, 선조체(caudate + putamen)의 가장 배쪽 부분.

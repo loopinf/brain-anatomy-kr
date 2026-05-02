@@ -27,6 +27,10 @@ see_also:
 전부 조율하는 **항상성(homeostasis) 사령탑**이고, 동시에 [뇌하수체](pituitary.md)를
 통제해서 온몸의 호르몬 분비를 지휘한다.
 
+## 구조 도식
+
+{% include diagrams/region-hypothalamus.html %}
+
 ## 위치
 
 - 시상([thalamus](thalamus.md)) 바로 아래, 뇌의 한가운데 바닥.

@@ -1,0 +1,82 @@
+{%- comment -%}
+  Pituitary region overview — anterior + posterior lobes, hypothalamus
+  control via portal vessels (anterior) or direct axons (posterior),
+  outputs to body endocrine targets.
+{%- endcomment -%}
+<svg class="circuit-diagram" viewBox="0 0 820 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="뇌하수체 구조 도식">
+  <defs>
+    <marker id="pit-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b15c40"/>
+    </marker>
+  </defs>
+
+  <text class="cd-section" x="20" y="24">뇌하수체 — 시상하부의 명령을 호르몬으로 변환해 전신으로</text>
+
+  <!-- Hypothalamus (top) -->
+  <g class="cd-box cd-region" transform="translate(280,50)">
+    <rect width="260" height="60" rx="8"/>
+    <text class="cd-label" x="130" y="24">시상하부 (Hypothalamus)</text>
+    <text class="cd-sublabel" x="130" y="42">방출호르몬 + PVN/SON 뉴런</text>
+  </g>
+
+  <!-- Pituitary container with two lobes -->
+  <g class="cd-box cd-region" transform="translate(170,160)">
+    <rect width="480" height="140" rx="10" stroke-width="2"/>
+    <text class="cd-section" x="20" y="22">뇌하수체 (Pituitary)</text>
+  </g>
+
+  <!-- Anterior lobe -->
+  <g class="cd-box cd-nucleus" transform="translate(190,200)">
+    <rect width="220" height="86" rx="6"/>
+    <text class="cd-label" x="110" y="22">전엽 (Anterior)</text>
+    <text class="cd-sublabel" x="110" y="40">자체 분비:</text>
+    <text class="cd-sublabel" x="110" y="56">GH · TSH · ACTH</text>
+    <text class="cd-sublabel" x="110" y="72">FSH · LH · 프로락틴</text>
+  </g>
+
+  <!-- Posterior lobe -->
+  <g class="cd-box cd-nucleus" transform="translate(420,200)">
+    <rect width="220" height="86" rx="6"/>
+    <text class="cd-label" x="110" y="22">후엽 (Posterior)</text>
+    <text class="cd-sublabel" x="110" y="40">시상하부 뉴런이 직접 분비:</text>
+    <text class="cd-sublabel" x="110" y="56">옥시토신</text>
+    <text class="cd-sublabel" x="110" y="72">바소프레신 (ADH)</text>
+  </g>
+
+  <!-- Body targets -->
+  <g class="cd-box cd-output" transform="translate(20,330)">
+    <rect width="190" height="44" rx="8"/>
+    <text class="cd-sublabel" x="95" y="20" font-weight="600" fill="#2c2b29">갑상선 / 부신 / 생식샘</text>
+    <text class="cd-sublabel" x="95" y="34">전엽 → 표적 내분비샘</text>
+  </g>
+  <g class="cd-box cd-output" transform="translate(220,330)">
+    <rect width="190" height="44" rx="8"/>
+    <text class="cd-sublabel" x="95" y="20" font-weight="600" fill="#2c2b29">자궁 · 유선</text>
+    <text class="cd-sublabel" x="95" y="34">옥시토신 → 수축·수유</text>
+  </g>
+  <g class="cd-box cd-output" transform="translate(420,330)">
+    <rect width="190" height="44" rx="8"/>
+    <text class="cd-sublabel" x="95" y="20" font-weight="600" fill="#2c2b29">콩팥 집합관</text>
+    <text class="cd-sublabel" x="95" y="34">ADH → 수분 재흡수</text>
+  </g>
+  <g class="cd-box cd-output" transform="translate(620,330)">
+    <rect width="180" height="44" rx="8"/>
+    <text class="cd-sublabel" x="90" y="20" font-weight="600" fill="#2c2b29">전신 성장·대사</text>
+    <text class="cd-sublabel" x="90" y="34">GH · IGF-1</text>
+  </g>
+
+  <!-- Edges: hypothalamus -> two lobes -->
+  <path class="cd-arrow-modulate" d="M 350,110 L 300,200" marker-end="url(#pit-arr)"/>
+  <text class="cd-edge cd-edge-sub" x="290" y="155">portal vessel</text>
+  <text class="cd-edge cd-edge-sub" x="290" y="170">방출호르몬</text>
+
+  <path class="cd-arrow" d="M 470,110 L 530,200" marker-end="url(#pit-arr)"/>
+  <text class="cd-edge cd-edge-sub" x="520" y="155">축삭</text>
+  <text class="cd-edge cd-edge-sub" x="520" y="170">직접 운반</text>
+
+  <!-- Lobes -> body -->
+  <path class="cd-arrow" d="M 240,286 L 115,330" marker-end="url(#pit-arr)"/>
+  <path class="cd-arrow" d="M 320,286 L 315,330" marker-end="url(#pit-arr)"/>
+  <path class="cd-arrow" d="M 480,286 L 515,330" marker-end="url(#pit-arr)"/>
+  <path class="cd-arrow" d="M 600,286 L 700,330" marker-end="url(#pit-arr)"/>
+</svg>

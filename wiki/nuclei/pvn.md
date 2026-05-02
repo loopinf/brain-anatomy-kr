@@ -23,6 +23,11 @@ see_also:
 모아 자율신경계와 내분비계로 내보낸다. 섭식 조절뿐 아니라 스트레스·체액 균형까지
 출력하는 다용도 핵.
 
+## 도식
+
+{% include diagrams/nuc-pvn.html %}
+
+
 ## 위치
 
 [시상하부](../regions/hypothalamus.md)의 위쪽, **제3뇌실 옆에 붙어** 있다.

@@ -25,6 +25,11 @@ see_also:
 **시작점**이고, 내인성 아편(endorphin) 시스템의 핵심 무대. 진짜 모르핀이든 위약이든
 명상이든, 통증이 진압될 때 거의 항상 여기가 켜진다.
 
+## 도식
+
+{% include diagrams/nuc-pag.html %}
+
+
 ## 위치
 
 - **중뇌(midbrain)** 의 한가운데, 제3뇌실과 제4뇌실을 잇는 **중뇌수도**(aqueduct of Sylvius) 주위에 도넛처럼 둘러싼 회색질.

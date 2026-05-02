@@ -23,6 +23,11 @@ see_also:
 복원하는 **패턴 완성(pattern completion)** 을 수행한다. "조금만 떠올라도 전체가
 밀려오는" 회상의 신경 토대.
 
+## 도식
+
+{% include diagrams/nuc-ca3.html %}
+
+
 ## 위치
 
 - 해마의 가운데 영역. 입구 [DG](dg.md) → CA3 → [CA1](ca1.md) → 출구 순.

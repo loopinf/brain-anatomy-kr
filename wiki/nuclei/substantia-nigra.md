@@ -20,6 +20,11 @@ see_also:
 만들어 선조체(caudate·putamen)로 보내는 **흑질선조체 경로**의 출발점. 이 뉴런이
 죽으면 **파킨슨병**.
 
+## 도식
+
+{% include diagrams/nuc-substantia-nigra.html %}
+
+
 ## 위치 / 두 부분
 
 - **중뇌(midbrain)** 의 양쪽에 위치.

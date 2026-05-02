@@ -27,6 +27,10 @@ see_also:
 계산하고, [PAG](../nuclei/pag.md)·[시상하부](hypothalamus.md)·[청반](../nuclei/locus-coeruleus.md)으로
 즉각 자율·행동 반응을 출력한다.
 
+## 구조 도식
+
+{% include diagrams/region-amygdala.html %}
+
 ## 위치
 
 - **측두엽 안쪽 깊숙이**, [해마](hippocampus.md) 바로 앞.

@@ -23,6 +23,11 @@ see_also:
 [시상하부](../regions/hypothalamus.md)의 **섭식 중추(feeding center)**. 활성화되면
 "먹어라" 신호를 내보내는 핵. 길항 짝은 안쪽의 [VMH](vmh.md) (포만 중추).
 
+## 도식
+
+{% include diagrams/nuc-lh.html %}
+
+
 ## 위치
 
 [시상하부](../regions/hypothalamus.md) 안의 바깥쪽([lateral](../morphemes/lateral.md))

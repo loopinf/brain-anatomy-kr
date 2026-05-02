@@ -1,0 +1,76 @@
+{%- comment -%}
+  Amygdala region overview — almond cluster with BLA (input/learning)
+  and CeA (output) with the fan-out to defense systems.
+{%- endcomment -%}
+<svg class="circuit-diagram" viewBox="0 0 820 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="편도체 구조 도식">
+  <defs>
+    <marker id="amy-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b15c40"/>
+    </marker>
+  </defs>
+
+  <text class="cd-section" x="20" y="24">편도체 구조 — 측두엽 안의 아몬드, 학습(BLA) + 출력(CeA)</text>
+
+  <!-- Input -->
+  <g class="cd-box cd-input" transform="translate(20,90)">
+    <rect width="160" height="56" rx="8"/>
+    <text class="cd-label" x="80" y="24">시상 / 감각피질</text>
+    <text class="cd-sublabel" x="80" y="42">위협 자극 (low/high)</text>
+  </g>
+
+  <!-- Hippocampus context input -->
+  <g class="cd-box cd-region" transform="translate(20,180)">
+    <rect width="160" height="56" rx="8"/>
+    <text class="cd-label" x="80" y="24">해마</text>
+    <text class="cd-sublabel" x="80" y="42">맥락 표상</text>
+  </g>
+
+  <!-- Amygdala container with BLA + CeA inside -->
+  <g class="cd-box cd-region" transform="translate(220,80)">
+    <rect width="280" height="200" rx="10" stroke-width="2"/>
+    <text class="cd-section" x="20" y="22">편도체 (Amygdala)</text>
+  </g>
+  <g class="cd-box cd-nucleus" transform="translate(240,120)">
+    <rect width="240" height="60" rx="6"/>
+    <text class="cd-label" x="120" y="24">BLA</text>
+    <text class="cd-sublabel" x="120" y="42">외측-기저 · 입력·학습 (LTP)</text>
+  </g>
+  <g class="cd-box cd-nucleus" transform="translate(240,200)">
+    <rect width="240" height="60" rx="6"/>
+    <text class="cd-label" x="120" y="24">CeA</text>
+    <text class="cd-sublabel" x="120" y="42">중심 · 출력 라우터 (GABA)</text>
+  </g>
+
+  <!-- 4 outputs (fan) -->
+  <g class="cd-box cd-output" transform="translate(540,40)">
+    <rect width="240" height="44" rx="8"/>
+    <text class="cd-label" x="120" y="22">PAG · 동결(freezing)</text>
+  </g>
+  <g class="cd-box cd-output" transform="translate(540,108)">
+    <rect width="240" height="44" rx="8"/>
+    <text class="cd-label" x="120" y="22">시상하부 외측 · 교감 → 심박↑</text>
+  </g>
+  <g class="cd-box cd-output" transform="translate(540,176)">
+    <rect width="240" height="44" rx="8"/>
+    <text class="cd-label" x="120" y="22">PVN · HPA → 코르티솔↑</text>
+  </g>
+  <g class="cd-box cd-output" transform="translate(540,244)">
+    <rect width="240" height="44" rx="8"/>
+    <text class="cd-label" x="120" y="22">청반(LC) · NE → 각성↑</text>
+  </g>
+
+  <!-- Edges -->
+  <path class="cd-arrow" d="M 180,118 C 200,118 220,150 240,150" marker-end="url(#amy-arr)"/>
+  <path class="cd-arrow-modulate" d="M 180,208 L 240,225" marker-end="url(#amy-arr)"/>
+  <text class="cd-edge cd-edge-sub" x="195" y="200">맥락 → BLA</text>
+
+  <!-- BLA -> CeA -->
+  <path class="cd-arrow" d="M 360,180 L 360,200" marker-end="url(#amy-arr)"/>
+  <text class="cd-edge" x="395" y="192">위협 평가</text>
+
+  <!-- CeA -> 4 outputs -->
+  <path class="cd-arrow" d="M 480,210 C 510,210 520,62 540,62" marker-end="url(#amy-arr)"/>
+  <path class="cd-arrow" d="M 480,225 C 510,225 520,130 540,130" marker-end="url(#amy-arr)"/>
+  <path class="cd-arrow" d="M 480,240 L 540,198" marker-end="url(#amy-arr)"/>
+  <path class="cd-arrow" d="M 480,255 C 510,255 520,266 540,266" marker-end="url(#amy-arr)"/>
+</svg>

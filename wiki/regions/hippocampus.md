@@ -29,6 +29,10 @@ see_also:
 [글루타메이트](../molecules/glutamate.md) 시냅스의 LTP가 처음 발견된 곳이며,
 **알츠하이머가 가장 먼저 침범**하는 부위.
 
+## 구조 도식
+
+{% include diagrams/region-hippocampus.html %}
+
 ## 위치
 
 - 좌우 **측두엽 안쪽** 깊숙이, [편도체](amygdala.md) 바로 뒤.

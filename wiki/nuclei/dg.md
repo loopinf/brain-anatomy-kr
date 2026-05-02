@@ -21,6 +21,11 @@ see_also:
 [해마](../regions/hippocampus.md) 회로의 **첫 단**. [내후각피질](entorhinal.md)에서 받은 정보를 **패턴
 분리(pattern separation)** — 비슷한 입력을 서로 다른 활성 패턴으로 만드는 일 — 처리한 뒤 [CA3](ca3.md)으로 보낸다. **성인 뇌에서 신경발생이 일어나는 드문 부위** 중 하나.
 
+## 도식
+
+{% include diagrams/nuc-dg.html %}
+
+
 ## 위치
 
 - 해마의 입구. C자형 해마의 갈라지는 안쪽에 위치, 톱니 같은 모양 → "치아이랑".

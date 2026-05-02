@@ -1,0 +1,83 @@
+{%- comment -%}
+  Hippocampus region overview — C-shaped structure with EC gateway,
+  trisynaptic flow, and connections to amygdala (context fear) and
+  neocortex (consolidation).
+{%- endcomment -%}
+<svg class="circuit-diagram" viewBox="0 0 820 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="해마 구조 도식">
+  <defs>
+    <marker id="hip-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b15c40"/>
+    </marker>
+  </defs>
+
+  <text class="cd-section" x="20" y="24">해마 구조 — 측두엽 안쪽의 C자형, 안에 트리시냅틱 회로</text>
+
+  <!-- Neocortex (input/output) -->
+  <g class="cd-box cd-input" transform="translate(20,130)">
+    <rect width="120" height="60" rx="8"/>
+    <text class="cd-label" x="60" y="26">신피질</text>
+    <text class="cd-sublabel" x="60" y="44">감각·연합 입력</text>
+  </g>
+
+  <!-- EC gateway -->
+  <g class="cd-box cd-nucleus" transform="translate(170,130)">
+    <rect width="120" height="60" rx="8"/>
+    <text class="cd-label" x="60" y="22">EC</text>
+    <text class="cd-sublabel" x="60" y="40">내후각피질</text>
+    <text class="cd-sublabel" x="60" y="54">격자세포</text>
+  </g>
+
+  <!-- Hippocampus container with 3 nuclei inside -->
+  <g class="cd-box cd-region" transform="translate(320,90)">
+    <rect width="380" height="140" rx="10" stroke-width="2"/>
+    <text class="cd-section" x="20" y="22">해마 (Hippocampus)</text>
+  </g>
+
+  <g class="cd-box cd-nucleus" transform="translate(340,130)">
+    <rect width="100" height="60" rx="6"/>
+    <text class="cd-label" x="50" y="22">DG</text>
+    <text class="cd-sublabel" x="50" y="40">치아이랑</text>
+    <text class="cd-sublabel" x="50" y="54">패턴 분리</text>
+  </g>
+  <g class="cd-box cd-nucleus" transform="translate(460,130)">
+    <rect width="100" height="60" rx="6"/>
+    <text class="cd-label" x="50" y="22">CA3</text>
+    <text class="cd-sublabel" x="50" y="40">자기연상</text>
+    <text class="cd-sublabel" x="50" y="54">패턴 완성</text>
+  </g>
+  <g class="cd-box cd-nucleus" transform="translate(580,130)">
+    <rect width="100" height="60" rx="6"/>
+    <text class="cd-label" x="50" y="22">CA1</text>
+    <text class="cd-sublabel" x="50" y="40">출력 + 비교</text>
+    <text class="cd-sublabel" x="50" y="54">장소세포 · LTP</text>
+  </g>
+
+  <!-- Amygdala (sibling, context fear) -->
+  <g class="cd-box cd-region" transform="translate(460,250)">
+    <rect width="220" height="50" rx="8"/>
+    <text class="cd-label" x="110" y="22">편도체 (Amygdala)</text>
+    <text class="cd-sublabel" x="110" y="38">맥락 공포 — 짝 변연계</text>
+  </g>
+
+  <!-- Output back to neocortex -->
+  <g class="cd-box cd-output" transform="translate(720,130)">
+    <rect width="80" height="60" rx="8"/>
+    <text class="cd-label" x="40" y="26">→ 신피질</text>
+    <text class="cd-sublabel" x="40" y="44">통합</text>
+  </g>
+
+  <!-- Edges -->
+  <path class="cd-arrow" d="M 140,160 L 170,160" marker-end="url(#hip-arr)"/>
+  <path class="cd-arrow" d="M 290,160 L 340,160" marker-end="url(#hip-arr)"/>
+  <path class="cd-arrow" d="M 440,160 L 460,160" marker-end="url(#hip-arr)"/>
+  <path class="cd-arrow" d="M 560,160 L 580,160" marker-end="url(#hip-arr)"/>
+  <path class="cd-arrow" d="M 680,160 L 720,160" marker-end="url(#hip-arr)"/>
+
+  <!-- Hippocampus <-> amygdala (context fear bidirectional) -->
+  <path class="cd-arrow-modulate" d="M 570,200 L 570,250" marker-end="url(#hip-arr)"/>
+  <text class="cd-edge cd-edge-sub" x="610" y="232">맥락 공포</text>
+
+  <!-- Loop back from EC V to neocortex -->
+  <path class="cd-arrow-loop" d="M 760,130 C 760,40 100,40 80,130" marker-end="url(#hip-arr)"/>
+  <text class="cd-edge cd-edge-sub" x="400" y="35">시스템 통합 (수면)</text>
+</svg>

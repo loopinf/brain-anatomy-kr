@@ -26,6 +26,11 @@ see_also:
 [시상하부](../regions/hypothalamus.md)로 심박·혈압·HPA축, [청반](locus-coeruleus.md)으로
 각성·주의를. 사실상 **편도체의 출력 라우터**.
 
+## 도식
+
+{% include diagrams/nuc-cea.html %}
+
+
 ## 위치 / 구성
 
 - [편도체](../regions/amygdala.md) 안쪽-위쪽에 위치.

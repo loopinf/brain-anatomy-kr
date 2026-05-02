@@ -24,6 +24,11 @@ see_also:
 [시상하부](../regions/hypothalamus.md)의 **포만 중추(satiety center)**. 식사 후
 활성화되어 "그만 먹어"라고 말하는 핵. 길항 짝은 외측의 [LH](lh.md) (섭식 중추).
 
+## 도식
+
+{% include diagrams/nuc-vmh.html %}
+
+
 ## 위치
 
 [시상하부](../regions/hypothalamus.md) 안의

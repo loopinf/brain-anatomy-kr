@@ -25,6 +25,11 @@ see_also:
 [시상하부](../regions/hypothalamus.md)의 **혈중 호르몬 감지 허브**. 안에 길항하는
 두 뉴런 집단이 살면서 "먹기 vs 멈추기" 결정을 직접 내린다. 섭식 회로의 사령탑.
 
+## 도식
+
+{% include diagrams/nuc-arc.html %}
+
+
 ## 위치
 
 [시상하부](../regions/hypothalamus.md) 바닥 쪽, 제3뇌실 옆을 따라 활(arc) 모양으로

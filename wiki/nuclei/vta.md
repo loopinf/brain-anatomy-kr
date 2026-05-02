@@ -21,6 +21,11 @@ see_also:
 **VTA는 보상·동기·중독 회로의 출발점**. 측좌핵·전전두엽·편도체로 도파민을 뿌려
 "이건 좋다, 또 하자"를 만든다.
 
+## 도식
+
+{% include diagrams/nuc-vta.html %}
+
+
 ## 위치
 
 - 중뇌의 [ventral](../morphemes/ventral.md) (배쪽) 부분, [흑색질](substantia-nigra.md)과 정중선 사이.

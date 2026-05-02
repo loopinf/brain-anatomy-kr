@@ -23,6 +23,11 @@ see_also:
 EC를 거쳐 해마로 들어가고, 해마에서 처리된 정보가 EC를 거쳐 신피질로 다시
 나간다. **격자세포(grid cell)**의 고향.
 
+## 도식
+
+{% include diagrams/nuc-entorhinal.html %}
+
+
 ## 위치
 
 - 측두엽 안쪽, [해마](../regions/hippocampus.md) 바로 옆 / 앞.

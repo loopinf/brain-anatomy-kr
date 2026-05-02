@@ -1,0 +1,14 @@
+<svg class="circuit-diagram" viewBox="0 0 760 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ARC 미니 도식">
+  <defs><marker id="arc-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b15c40"/></marker></defs>
+  <g class="cd-box cd-molecule" transform="translate(20,30)"><rect width="160" height="48" rx="6"/><text class="cd-label" x="80" y="20">그렐린</text><text class="cd-sublabel" x="80" y="36">위 (공복)</text></g>
+  <g class="cd-box cd-molecule" transform="translate(20,140)"><rect width="160" height="48" rx="6"/><text class="cd-label" x="80" y="20">렙틴 · 인슐린</text><text class="cd-sublabel" x="80" y="36">지방·췌장 (식후)</text></g>
+  <g class="cd-box cd-nucleus" transform="translate(240,40)"><rect width="240" height="140" rx="10"/><text class="cd-label" x="120" y="24">ARC (활꼴핵)</text><text class="cd-sublabel" x="120" y="42">BBB 약함 — 직접 감지</text><line x1="20" y1="58" x2="220" y2="58" stroke="#b8714e" stroke-width="0.6" stroke-dasharray="3 3"/><text class="cd-sublabel" x="120" y="78" font-weight="600">AgRP/NPY ⟷ POMC/CART</text><text class="cd-sublabel" x="120" y="96">길항 두 뉴런 집단</text><text class="cd-sublabel" x="120" y="114">먹기 vs 멈추기</text></g>
+  <g class="cd-box cd-output" transform="translate(540,30)"><rect width="200" height="48" rx="6"/><text class="cd-label" x="100" y="20">LH (섭식)</text><text class="cd-sublabel" x="100" y="36">"먹어!"</text></g>
+  <g class="cd-box cd-output" transform="translate(540,140)"><rect width="200" height="48" rx="6"/><text class="cd-label" x="100" y="20">VMH · PVN (포만)</text><text class="cd-sublabel" x="100" y="36">"그만!"</text></g>
+  <path class="cd-arrow" d="M 180,54 L 240,80" marker-end="url(#arc-a)"/>
+  <path class="cd-arrow" d="M 180,164 L 240,140" marker-end="url(#arc-a)"/>
+  <path class="cd-arrow" d="M 480,80 L 540,54" marker-end="url(#arc-a)"/>
+  <text class="cd-edge cd-edge-sub" x="510" y="58">AgRP</text>
+  <path class="cd-arrow" d="M 480,140 L 540,164" marker-end="url(#arc-a)"/>
+  <text class="cd-edge cd-edge-sub" x="510" y="160">POMC</text>
+</svg>

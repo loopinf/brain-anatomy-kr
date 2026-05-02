@@ -27,6 +27,11 @@ see_also:
 > (b) **외측핵(LA) + 기저핵(BA)** 묶은 "basolateral complex"의 넓은 의미로 쓰인다.
 > 이 페이지는 (b)의 넓은 의미. LA와 BA를 한 페이지에 같이 다룬다.
 
+## 도식
+
+{% include diagrams/nuc-bla.html %}
+
+
 ## 위치 / 구성
 
 - [편도체](../regions/amygdala.md) 의 외측·기저 부분.

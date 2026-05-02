@@ -23,6 +23,11 @@ see_also:
 [CA3](ca3.md)에서 온 신호와 [내후각피질](entorhinal.md) layer III에서 온 신호를
 비교·통합한 뒤 분리부(subiculum)·EC를 통해 신피질로 출력. **LTP가 처음 측정된 시냅스**도 여기 (CA3 → CA1).
 
+## 도식
+
+{% include diagrams/nuc-ca1.html %}
+
+
 ## 위치
 
 - 해마의 출구. [DG](dg.md) → [CA3](ca3.md) → CA1 → subiculum → 신피질 순.

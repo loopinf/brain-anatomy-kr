@@ -22,6 +22,11 @@ see_also:
 촉각·고유감각·통각·온도감각을 전부 받아 1차 체성감각피질(S1)로 보낸다.
 얼굴은 짝핵 VPM이 담당.
 
+## 도식
+
+{% include diagrams/nuc-vpl.html %}
+
+
 ## 위치
 
 - 시상의 [ventral](../morphemes/ventral.md) + posterior + [lateral](../morphemes/lateral.md) — 즉 시상의 **배쪽-뒤쪽-바깥쪽** 부분. 이름에 위치가 다 적혀 있음.

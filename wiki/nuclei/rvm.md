@@ -19,11 +19,15 @@ see_also:
 
 # 연수 복내측부 · Rostral Ventromedial Medulla · RVM
 
-## 한 줄 요청
+## 한 줄 요약
 
 [PAG](pag.md)의 명령을 받아 **척수까지 통증 억제 신호를 내려보내는 마지막 중계소**.
 연수의 위쪽-앞쪽-안쪽(rostral + [ventral](../morphemes/ventral.md) + [medial](../morphemes/medial.md))에 위치.
 [세로토닌](../molecules/serotonin.md)·[노르에피네프린](../molecules/norepinephrine.md) 하행 경로의 출발지.
+
+## 도식
+
+{% include diagrams/nuc-rvm.html %}
 
 ## 위치
 
