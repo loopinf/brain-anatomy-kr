@@ -20,6 +20,11 @@ see_also:
 **라틴어 *medius* ("가운데")** 에서 온 방향 형용사. 몸 가운데를 가르는 정중선
 (midline)에 **가까운 쪽**. 정반대는 [lateral](lateral.md) ("바깥쪽").
 
+## 도식
+
+{% include diagrams/mor-medial.html %}
+
+
 ## 해부학적 의미
 
 - 몸의 좌우 대칭축인 정중선에 가까울수록 medial.

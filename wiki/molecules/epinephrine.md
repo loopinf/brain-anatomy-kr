@@ -24,6 +24,11 @@ see_also:
 
 > **한 분자, 두 이름.** 에피네프린(미국식)과 아드레날린(영국식)은 **같은 분자**.
 
+## 도식
+
+{% include diagrams/mol-epinephrine.html %}
+
+
 ## 어디서 오나
 
 - **부신수질(adrenal medulla)**: 부신의 안쪽. 카테콜아민 합성의 마지막 효소

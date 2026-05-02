@@ -22,6 +22,11 @@ see_also:
 **지방세포가 직접** 분비하는 장기 포만 호르몬. 몸의 지방량을 뇌에 알려서
 "충분히 저장돼 있어, 그만 먹어"라고 말한다.
 
+## 도식
+
+{% include diagrams/mol-leptin.html %}
+
+
 ## 어디서 오나
 
 - 흰지방조직(white adipose tissue)에서 분비. 지방량에 비례.

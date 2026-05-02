@@ -21,6 +21,11 @@ see_also:
 "켜기"라면 GABA는 "끄기". 항불안제·수면제·전신마취제·항경련제 거의 모두가 어떤
 형태로든 GABA-A 수용체를 강화해서 듣는다.
 
+## 도식
+
+{% include diagrams/mol-gaba.html %}
+
+
 ## 어디서 오나
 
 - 합성: **글루타메이트 → GABA** (효소 GAD, glutamic acid decarboxylase가 카르복실기 하나 떼어냄). 흥분성 분자가 한 단계로 억제성으로 변하는 흥미로운 구조.

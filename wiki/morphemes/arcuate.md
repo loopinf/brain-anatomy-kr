@@ -18,6 +18,11 @@ see_also:
 **라틴어 *arcus* ("활")** 에서 온 형용사. "활 모양으로 휜". 해부에서는 곡선
 모양을 띤 구조의 이름에 박혀 있다.
 
+## 도식
+
+{% include diagrams/mor-arcuate.html %}
+
+
 ## 의학·해부 등장
 
 - *arcuate nucleus* — 시상하부 [ARC](../nuclei/arc.md). 제3뇌실 옆을 따라 활처럼

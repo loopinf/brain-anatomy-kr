@@ -19,6 +19,11 @@ see_also:
 **그리스어 ὑπό (hypo)** = "아래". 해부학·생화학에서 "기준점보다 아래·낮은" 의미로
 자주 쓰인다. 정반대는 *hyper-* ("위·과한").
 
+## 도식
+
+{% include diagrams/mor-hypo.html %}
+
+
 ## 의학·해부에서의 패턴
 
 - 기준점 **아래**에 위치한 구조: hypothalamus, hypophysis, hypogastric.

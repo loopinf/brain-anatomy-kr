@@ -18,6 +18,11 @@ see_also:
 **그리스어 παρά (para)** = "옆·곁·나란히". 해부에서는 어떤 구조 **바로 옆**에
 있는 것을 가리킬 때 자주 쓴다. 비슷한 뜻의 라틴어 형태소는 *juxta-*.
 
+## 도식
+
+{% include diagrams/mor-para.html %}
+
+
 ## 해부 패턴
 
 - *para*ventricular = **뇌실 옆** → [PVN](../nuclei/pvn.md).

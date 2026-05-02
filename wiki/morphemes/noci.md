@@ -20,6 +20,11 @@ see_also:
 "**해로운 자극**"을 가리킨다. 통증 과학에서는 "통증(pain)"과 "해로운 자극의
 감지(nociception)"를 구별하는 키.
 
+## 도식
+
+{% include diagrams/mor-noci.html %}
+
+
 ## 핵심 구분 — nociception ≠ pain
 
 - **Nociception** = 신경계가 해로운 자극을 감지·전달하는 *물리적 과정*. 의식 없이도 일어남 (마취 중에도 nociception은 진행).

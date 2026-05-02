@@ -24,6 +24,11 @@ see_also:
 [하행 통증 조절](../circuits/descending-pain-modulation.md)을 켜고 통증을 누른다.
 모르핀·헤로인·펜타닐은 이 시스템을 외부에서 흉내 낸 것.
 
+## 도식
+
+{% include diagrams/mol-endorphin.html %}
+
+
 ## 가족 (3종)
 
 | 펩타이드 | 주요 분비처 | 선호 수용체 |

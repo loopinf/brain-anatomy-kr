@@ -26,6 +26,11 @@ see_also:
 [VTA](../nuclei/vta.md)에서 측좌핵·전전두엽으로 가는 보상 회로(중독·조현병의 무대)
 — 이 둘이 별개의 시스템임이 핵심.
 
+## 도식
+
+{% include diagrams/mol-dopamine.html %}
+
+
 ## 어디서 오나
 
 세 가지 주요 도파민 시스템 (각각 다른 핵에서 출발):

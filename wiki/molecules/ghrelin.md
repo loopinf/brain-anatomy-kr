@@ -22,6 +22,11 @@ see_also:
 위가 비면 분비되는 **유일한 식욕 촉진(orexigenic) 호르몬**. 혈류를 타고
 [ARC](../nuclei/arc.md)의 AgRP/NPY 뉴런을 켜서 "배고프다" 신호를 만든다.
 
+## 도식
+
+{% include diagrams/mol-ghrelin.html %}
+
+
 ## 어디서 오나
 
 - 주로 **위(stomach)** 의 위저부(fundus) 점막 P/D1 세포에서 분비.

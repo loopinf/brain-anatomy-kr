@@ -20,6 +20,11 @@ see_also:
 **라틴어 *latus* ("옆·측면")** 에서 온 방향 형용사. 몸 정중선에서 **멀리 떨어진
 바깥쪽**. 정반대는 [medial](medial.md) ("안쪽").
 
+## 도식
+
+{% include diagrams/mor-lateral.html %}
+
+
 ## 해부학적 의미
 
 - 정중선에서 멀어질수록 lateral.

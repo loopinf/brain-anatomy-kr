@@ -25,6 +25,11 @@ see_also:
 기분·수면·식욕·통증 조절·체온·소화 — 거의 모든 항상성 조절 회로를 약하게 톤(tone)
 조절한다. SSRI 항우울제의 표적.
 
+## 도식
+
+{% include diagrams/mol-serotonin.html %}
+
+
 ## 어디서 오나
 
 - **뇌간 정중선의 [봉선핵(raphe nuclei)](../nuclei/raphe.md)**. 8~9개의 작은 핵 군집.

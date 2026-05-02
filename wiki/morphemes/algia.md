@@ -21,6 +21,11 @@ see_also:
 아프다"를 만드는 거의 유일한 패턴. *an-* (없는)을 붙이면 정반대인 **analgesia**
 (무통).
 
+## 도식
+
+{% include diagrams/mor-algia.html %}
+
+
 ## 한 패턴, 많은 용어
 
 - **neur**+**algia** = 신경통.
