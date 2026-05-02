@@ -1,0 +1,89 @@
+{%- comment -%}
+  Hippocampal trisynaptic circuit: EC -> DG -> CA3 -> CA1 -> EC.
+  Plus CA3 recurrent collateral and EC layer III -> CA1 direct
+  (temporoammonic) shortcut.
+{%- endcomment -%}
+<svg class="circuit-diagram" viewBox="0 0 820 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="해마 3시냅스 회로 도식">
+  <defs>
+    <marker id="tri-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b15c40"/>
+    </marker>
+  </defs>
+
+  <text class="cd-section" x="20" y="24">신피질 → 해마 → 신피질 회로</text>
+
+  <!-- Neocortex (start) -->
+  <g class="cd-box cd-input" transform="translate(20,140)">
+    <rect width="120" height="60" rx="8"/>
+    <text class="cd-label" x="60" y="26">신피질</text>
+    <text class="cd-sublabel" x="60" y="44">감각·연합 입력</text>
+  </g>
+
+  <!-- EC -->
+  <g class="cd-box cd-nucleus" transform="translate(180,140)">
+    <rect width="140" height="60" rx="8"/>
+    <text class="cd-label" x="70" y="26">EC</text>
+    <text class="cd-sublabel" x="70" y="44">내후각피질 (격자)</text>
+  </g>
+
+  <!-- DG -->
+  <g class="cd-box cd-nucleus" transform="translate(360,50)">
+    <rect width="120" height="60" rx="8"/>
+    <text class="cd-label" x="60" y="26">DG</text>
+    <text class="cd-sublabel" x="60" y="44">패턴 분리</text>
+  </g>
+
+  <!-- CA3 (with recurrent loop hint) -->
+  <g class="cd-box cd-nucleus" transform="translate(360,140)">
+    <rect width="120" height="60" rx="8"/>
+    <text class="cd-label" x="60" y="26">CA3</text>
+    <text class="cd-sublabel" x="60" y="44">패턴 완성 (자기연상)</text>
+  </g>
+
+  <!-- CA1 -->
+  <g class="cd-box cd-nucleus" transform="translate(540,140)">
+    <rect width="120" height="60" rx="8"/>
+    <text class="cd-label" x="60" y="26">CA1</text>
+    <text class="cd-sublabel" x="60" y="44">출력 + 장소세포</text>
+  </g>
+
+  <!-- Subiculum / EC layer V (output) -->
+  <g class="cd-box cd-nucleus" transform="translate(700,140)">
+    <rect width="100" height="60" rx="8"/>
+    <text class="cd-label" x="50" y="26">EC V</text>
+    <text class="cd-sublabel" x="50" y="44">→ 신피질</text>
+  </g>
+
+  <!-- Edges -->
+  <!-- Neocortex -> EC -->
+  <path class="cd-arrow" d="M 140,170 L 180,170" marker-end="url(#tri-arr)"/>
+
+  <!-- EC -> DG (perforant) -->
+  <path class="cd-arrow" d="M 250,140 C 300,140 320,80 360,80" marker-end="url(#tri-arr)"/>
+  <text class="cd-edge" x="305" y="110">perforant</text>
+  <text class="cd-edge cd-edge-sub" x="305" y="123">EC II</text>
+
+  <!-- DG -> CA3 (mossy fiber) -->
+  <path class="cd-arrow" d="M 420,110 L 420,140" marker-end="url(#tri-arr)"/>
+  <text class="cd-edge" x="475" y="125">이끼섬유</text>
+
+  <!-- CA3 -> CA1 (Schaffer collateral) -->
+  <path class="cd-arrow" d="M 480,170 L 540,170" marker-end="url(#tri-arr)"/>
+  <text class="cd-edge" x="510" y="160">Schaffer · LTP</text>
+
+  <!-- CA1 -> EC V -->
+  <path class="cd-arrow" d="M 660,170 L 700,170" marker-end="url(#tri-arr)"/>
+
+  <!-- EC V -> 신피질 (back to cortex), curved over top -->
+  <path class="cd-arrow-loop" d="M 750,140 C 750,30 100,30 80,140" marker-end="url(#tri-arr)"/>
+  <text class="cd-edge" x="400" y="22">시스템 통합 (수면 SWR)</text>
+
+  <!-- CA3 recurrent self-loop -->
+  <path class="cd-arrow-loop" d="M 480,150 C 530,90 530,150 480,178" marker-end="url(#tri-arr)"/>
+  <text class="cd-edge" x="540" y="100">recurrent</text>
+
+  <!-- EC III -> CA1 (temporoammonic shortcut, dashed/modulate) -->
+  <path class="cd-arrow-modulate" d="M 250,180 C 350,260 500,260 580,200" marker-end="url(#tri-arr)"/>
+  <text class="cd-edge" x="430" y="265">temporoammonic (EC III)</text>
+  <text class="cd-edge cd-edge-sub" x="430" y="278">현재 입력 직접</text>
+</svg>

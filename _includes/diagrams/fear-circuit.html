@@ -1,0 +1,111 @@
+{%- comment -%}
+  Fear circuit — LeDoux's two roads (low: thalamus->BLA, high:
+  thalamus->cortex->BLA), BLA->CeA, then CeA fans out to multiple
+  defense outputs.
+{%- endcomment -%}
+<svg class="circuit-diagram" viewBox="0 0 820 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="공포 회로 도식">
+  <defs>
+    <marker id="fear-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b15c40"/>
+    </marker>
+  </defs>
+
+  <text class="cd-section" x="20" y="24">감각 입력</text>
+  <text class="cd-section" x="290" y="24">학습 (BLA) · 출력 게이트 (CeA)</text>
+  <text class="cd-section" x="620" y="24">방어 출력</text>
+
+  <!-- Sensory input -->
+  <g class="cd-box cd-input" transform="translate(20,80)">
+    <rect width="160" height="56" rx="8"/>
+    <text class="cd-label" x="80" y="24">위협 자극</text>
+    <text class="cd-sublabel" x="80" y="42">청각·시각·통각</text>
+  </g>
+
+  <!-- Thalamus -->
+  <g class="cd-box cd-region" transform="translate(20,180)">
+    <rect width="160" height="56" rx="8"/>
+    <text class="cd-label" x="80" y="24">시상</text>
+    <text class="cd-sublabel" x="80" y="42">Thalamus</text>
+  </g>
+
+  <!-- Sensory cortex (high road detour) -->
+  <g class="cd-box cd-region" transform="translate(20,290)">
+    <rect width="160" height="56" rx="8"/>
+    <text class="cd-label" x="80" y="24">감각피질</text>
+    <text class="cd-sublabel" x="80" y="42">정밀 분석 (high road)</text>
+  </g>
+
+  <!-- BLA + CeA (linked vertically) -->
+  <g class="cd-box cd-nucleus" transform="translate(290,140)">
+    <rect width="200" height="64" rx="8"/>
+    <text class="cd-label" x="100" y="22">BLA</text>
+    <text class="cd-sublabel" x="100" y="40">외측-기저 편도체</text>
+    <text class="cd-sublabel" x="100" y="55">학습 (LTP)</text>
+  </g>
+
+  <g class="cd-box cd-nucleus" transform="translate(290,250)">
+    <rect width="200" height="64" rx="8"/>
+    <text class="cd-label" x="100" y="22">CeA</text>
+    <text class="cd-sublabel" x="100" y="40">중심 편도체</text>
+    <text class="cd-sublabel" x="100" y="55">출력 라우터 (GABA)</text>
+  </g>
+
+  <!-- Outputs (4 fan-out) -->
+  <g class="cd-box cd-output" transform="translate(620,40)">
+    <rect width="180" height="50" rx="8"/>
+    <text class="cd-label" x="90" y="22">PAG</text>
+    <text class="cd-sublabel" x="90" y="38">동결 (freezing)</text>
+  </g>
+  <g class="cd-box cd-output" transform="translate(620,118)">
+    <rect width="180" height="50" rx="8"/>
+    <text class="cd-label" x="90" y="22">시상하부 외측</text>
+    <text class="cd-sublabel" x="90" y="38">교감 → 심박·발한 ↑</text>
+  </g>
+  <g class="cd-box cd-output" transform="translate(620,196)">
+    <rect width="180" height="50" rx="8"/>
+    <text class="cd-label" x="90" y="22">시상하부 PVN</text>
+    <text class="cd-sublabel" x="90" y="38">HPA → 코르티솔 ↑</text>
+  </g>
+  <g class="cd-box cd-output" transform="translate(620,274)">
+    <rect width="180" height="50" rx="8"/>
+    <text class="cd-label" x="90" y="22">청반 (LC)</text>
+    <text class="cd-sublabel" x="90" y="38">NE → 각성 ↑</text>
+  </g>
+
+  <!-- Hippocampus context (bottom) -->
+  <g class="cd-box cd-region" transform="translate(290,380)">
+    <rect width="200" height="48" rx="8"/>
+    <text class="cd-label" x="100" y="22">해마</text>
+    <text class="cd-sublabel" x="100" y="38">맥락(context) 표상</text>
+  </g>
+
+  <!-- Edges: input to thalamus -->
+  <path class="cd-arrow" d="M 100,136 L 100,180" marker-end="url(#fear-arr)"/>
+
+  <!-- Low road: thalamus -> BLA -->
+  <path class="cd-arrow" d="M 180,200 C 240,200 260,170 290,170" marker-end="url(#fear-arr)"/>
+  <text class="cd-edge" x="232" y="190">low road</text>
+  <text class="cd-edge cd-edge-sub" x="232" y="203">~12 ms · 거친 신호</text>
+
+  <!-- Thalamus -> sensory cortex -->
+  <path class="cd-arrow" d="M 100,236 L 100,290" marker-end="url(#fear-arr)"/>
+
+  <!-- High road: cortex -> BLA -->
+  <path class="cd-arrow" d="M 180,310 C 240,310 270,205 290,195" marker-end="url(#fear-arr)"/>
+  <text class="cd-edge" x="240" y="280">high road</text>
+  <text class="cd-edge cd-edge-sub" x="240" y="293">~30~40 ms · 정밀</text>
+
+  <!-- BLA -> CeA -->
+  <path class="cd-arrow" d="M 390,204 L 390,250" marker-end="url(#fear-arr)"/>
+  <text class="cd-edge" x="424" y="228">위협 평가</text>
+
+  <!-- CeA -> 4 outputs -->
+  <path class="cd-arrow" d="M 490,260 C 560,260 580,65 620,65" marker-end="url(#fear-arr)"/>
+  <path class="cd-arrow" d="M 490,275 C 560,275 580,143 620,143" marker-end="url(#fear-arr)"/>
+  <path class="cd-arrow" d="M 490,290 L 620,221" marker-end="url(#fear-arr)"/>
+  <path class="cd-arrow" d="M 490,305 C 560,305 580,300 620,299" marker-end="url(#fear-arr)"/>
+
+  <!-- Hippocampus -> BLA (context fear) -->
+  <path class="cd-arrow-modulate" d="M 390,380 C 390,330 390,300 390,314" marker-end="url(#fear-arr)"/>
+  <text class="cd-edge" x="465" y="350">맥락 → BLA</text>
+</svg>

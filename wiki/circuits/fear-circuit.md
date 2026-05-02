@@ -29,6 +29,10 @@ see_also:
 [편도체](../regions/amygdala.md) — [BLA](../nuclei/bla.md)가 학습하고
 [CeA](../nuclei/cea.md)가 출력한다. 의식이 도착하기 전에 이미 몸이 반응한다.
 
+## 회로 도식
+
+{% include diagrams/fear-circuit.html %}
+
 ## 두 길 — LeDoux의 high road / low road
 
 같은 자극이 [편도체](../regions/amygdala.md)에 두 길로 도달:

@@ -1,0 +1,92 @@
+{%- comment -%}
+  Descending pain modulation — PAG -> RVM -> dorsal horn, blocking
+  substance P at the first synapse. Endogenous opioids enter at PAG.
+{%- endcomment -%}
+<svg class="circuit-diagram" viewBox="0 0 820 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="하행 통증 조절 회로 도식">
+  <defs>
+    <marker id="desc-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b15c40"/>
+    </marker>
+    <marker id="desc-arr-inh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto">
+      <line x1="9" y1="1" x2="9" y2="9" stroke="#4a4a4a" stroke-width="2"/>
+    </marker>
+  </defs>
+
+  <text class="cd-section" x="20" y="24">중뇌 → 연수 → 척수 (위에서 아래로 통증 차단)</text>
+
+  <!-- Triggers (left side) -->
+  <g class="cd-box cd-input" transform="translate(20,80)">
+    <rect width="180" height="100" rx="8"/>
+    <text class="cd-label" x="90" y="24">트리거</text>
+    <text class="cd-sublabel" x="90" y="42">모르핀 (외부)</text>
+    <text class="cd-sublabel" x="90" y="58">스트레스·운동</text>
+    <text class="cd-sublabel" x="90" y="74">위약·명상</text>
+    <text class="cd-sublabel" x="90" y="90">공포 (편도체)</text>
+  </g>
+
+  <!-- PAG (top) -->
+  <g class="cd-box cd-nucleus" transform="translate(290,80)">
+    <rect width="220" height="100" rx="10"/>
+    <text class="cd-label" x="110" y="26">PAG (수도주위회색질)</text>
+    <text class="cd-sublabel" x="110" y="46">μ-아편 수용체 풍부</text>
+    <text class="cd-sublabel" x="110" y="62">하행 진통의 사령탑</text>
+    <text class="cd-sublabel" x="110" y="82">중뇌</text>
+  </g>
+
+  <!-- RVM (middle) -->
+  <g class="cd-box cd-nucleus" transform="translate(290,230)">
+    <rect width="220" height="80" rx="8"/>
+    <text class="cd-label" x="110" y="22">RVM</text>
+    <text class="cd-sublabel" x="110" y="40">연수 복내측부</text>
+    <text class="cd-sublabel" x="110" y="56">5-HT · NE 분비</text>
+    <text class="cd-sublabel" x="110" y="70">OFF 세포 (진통) / ON 세포</text>
+  </g>
+
+  <!-- Dorsal horn (bottom, target) -->
+  <g class="cd-box cd-nucleus" transform="translate(290,360)">
+    <rect width="220" height="80" rx="8"/>
+    <text class="cd-label" x="110" y="22">척수 후각</text>
+    <text class="cd-sublabel" x="110" y="40">상행 통증 시냅스</text>
+    <text class="cd-sublabel" x="110" y="56">substance P 분비 ↓</text>
+    <text class="cd-sublabel" x="110" y="72">2차 신경원 흥분 ↓</text>
+  </g>
+
+  <!-- Side: drugs/molecules -->
+  <g class="cd-box cd-molecule" transform="translate(580,80)">
+    <rect width="200" height="60" rx="8"/>
+    <text class="cd-label" x="100" y="24">엔도르핀 (μ)</text>
+    <text class="cd-sublabel" x="100" y="42">enkephalin · dynorphin</text>
+  </g>
+  <g class="cd-box cd-molecule" transform="translate(580,230)">
+    <rect width="200" height="60" rx="8"/>
+    <text class="cd-label" x="100" y="24">5-HT · NE 하행</text>
+    <text class="cd-sublabel" x="100" y="42">SNRI 강화 표적</text>
+  </g>
+  <g class="cd-box cd-output" transform="translate(580,380)">
+    <rect width="200" height="60" rx="8"/>
+    <text class="cd-label" x="100" y="24">상행 통증 신호 차단</text>
+    <text class="cd-sublabel" x="100" y="42">→ 진통</text>
+  </g>
+
+  <!-- Edges: triggers -> PAG -->
+  <path class="cd-arrow" d="M 200,130 L 290,130" marker-end="url(#desc-arr)"/>
+
+  <!-- PAG -> endorphin (sidetag) -->
+  <path class="cd-arrow-modulate" d="M 510,110 L 580,110" marker-end="url(#desc-arr)"/>
+  <text class="cd-edge cd-edge-sub" x="545" y="98">활성 분자</text>
+
+  <!-- PAG -> RVM -->
+  <path class="cd-arrow" d="M 400,180 L 400,230" marker-end="url(#desc-arr)"/>
+  <text class="cd-edge" x="450" y="208">흥분</text>
+
+  <!-- RVM -> 5HT/NE side -->
+  <path class="cd-arrow-modulate" d="M 510,260 L 580,260" marker-end="url(#desc-arr)"/>
+
+  <!-- RVM -> dorsal horn -->
+  <path class="cd-arrow" d="M 400,310 L 400,360" marker-end="url(#desc-arr)"/>
+  <text class="cd-edge" x="455" y="338">5-HT · NE</text>
+
+  <!-- Dorsal horn -> output -->
+  <path class="cd-arrow-inhibit" d="M 510,400 L 580,400" marker-end="url(#desc-arr-inh)"/>
+  <text class="cd-edge cd-edge-sub" x="545" y="392">substance P 차단</text>
+</svg>

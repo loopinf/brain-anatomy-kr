@@ -1,0 +1,73 @@
+{%- comment -%}
+  Ascending pain pathway — nociceptor -> dorsal horn (cross at spinal
+  level) -> spinothalamic tract -> thalamus VPL -> S1 / ACC.
+  Two-track split (A-delta = first pain to S1, C = second pain to ACC).
+{%- endcomment -%}
+<svg class="circuit-diagram" viewBox="0 0 820 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="상행 통증 경로 도식">
+  <defs>
+    <marker id="asc-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b15c40"/>
+    </marker>
+  </defs>
+
+  <text class="cd-section" x="20" y="24">피부 → 척수 → 시상 → 대뇌피질</text>
+
+  <!-- Skin nociceptor (bottom) -->
+  <g class="cd-box cd-input" transform="translate(20,400)">
+    <rect width="180" height="60" rx="8"/>
+    <text class="cd-label" x="90" y="24">Nociceptor</text>
+    <text class="cd-sublabel" x="90" y="42">A-δ (빠름) · C (느림)</text>
+  </g>
+
+  <!-- Dorsal horn -->
+  <g class="cd-box cd-nucleus" transform="translate(260,400)">
+    <rect width="200" height="60" rx="8"/>
+    <text class="cd-label" x="100" y="24">척수 후각 (Dorsal horn)</text>
+    <text class="cd-sublabel" x="100" y="42">substance P · glutamate</text>
+  </g>
+
+  <!-- Spinothalamic tract (long arrow up the middle) -->
+  <g class="cd-box cd-circuit" transform="translate(260,260)">
+    <rect width="200" height="60" rx="8"/>
+    <text class="cd-label" x="100" y="24">척수–시상로 (STT)</text>
+    <text class="cd-sublabel" x="100" y="42">반대쪽으로 건너가 상행</text>
+  </g>
+
+  <!-- Thalamus (VPL/intralaminar) -->
+  <g class="cd-box cd-region" transform="translate(260,140)">
+    <rect width="200" height="60" rx="8"/>
+    <text class="cd-label" x="100" y="24">시상 (VPL · 내측핵)</text>
+    <text class="cd-sublabel" x="100" y="42">감각 중계</text>
+  </g>
+
+  <!-- S1 (위치/강도) -->
+  <g class="cd-box cd-region" transform="translate(540,80)">
+    <rect width="240" height="56" rx="8"/>
+    <text class="cd-label" x="120" y="24">S1 (1차 체성감각피질)</text>
+    <text class="cd-sublabel" x="120" y="42">"어디·얼마나" (A-δ 우세)</text>
+  </g>
+
+  <!-- ACC / insula (괴로움) -->
+  <g class="cd-box cd-region" transform="translate(540,180)">
+    <rect width="240" height="56" rx="8"/>
+    <text class="cd-label" x="120" y="24">ACC · Insula</text>
+    <text class="cd-sublabel" x="120" y="42">"괴롭다·견딜 수 없다" (C 우세)</text>
+  </g>
+
+  <!-- Edges -->
+  <path class="cd-arrow" d="M 200,430 L 260,430" marker-end="url(#asc-arr)"/>
+  <text class="cd-edge" x="230" y="420">손상 자극</text>
+
+  <path class="cd-arrow" d="M 360,400 L 360,320" marker-end="url(#asc-arr)"/>
+  <text class="cd-edge" x="425" y="362">교차 + LTP</text>
+  <text class="cd-edge cd-edge-sub" x="425" y="376">→ 2차 신경원</text>
+
+  <path class="cd-arrow" d="M 360,260 L 360,200" marker-end="url(#asc-arr)"/>
+  <text class="cd-edge" x="395" y="232">상행</text>
+
+  <!-- Thalamus splits into two outputs -->
+  <path class="cd-arrow" d="M 460,160 C 510,120 510,108 540,108" marker-end="url(#asc-arr)"/>
+  <text class="cd-edge" x="510" y="98">신피질로</text>
+  <path class="cd-arrow" d="M 460,180 C 510,200 510,208 540,208" marker-end="url(#asc-arr)"/>
+  <text class="cd-edge" x="510" y="200">고피질로</text>
+</svg>

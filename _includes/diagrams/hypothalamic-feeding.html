@@ -1,0 +1,97 @@
+{%- comment -%}
+  Hypothalamic feeding & satiety circuit — ARC central hub with two
+  antagonistic neuron populations (AgRP/NPY = orexigenic, POMC/CART
+  = anorexigenic), feeding hormones as inputs, LH/VMH/PVN as outputs.
+{%- endcomment -%}
+<svg class="circuit-diagram" viewBox="0 0 820 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="시상하부 섭식·포만 회로 도식">
+  <defs>
+    <marker id="feed-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b15c40"/>
+    </marker>
+    <marker id="feed-arr-inh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <line x1="9" y1="1" x2="9" y2="9" stroke="#4a4a4a" stroke-width="2"/>
+    </marker>
+  </defs>
+
+  <text class="cd-section" x="20" y="24">호르몬 입력</text>
+  <text class="cd-section" x="320" y="24">시상하부 핵 (감지·결정)</text>
+  <text class="cd-section" x="640" y="24">출력 → 행동</text>
+
+  <!-- Orexigenic input (top) -->
+  <g class="cd-box cd-molecule" transform="translate(20,46)">
+    <rect width="170" height="50" rx="8"/>
+    <text class="cd-label" x="85" y="22">그렐린 (Ghrelin)</text>
+    <text class="cd-sublabel" x="85" y="38">위 (공복) ↑</text>
+  </g>
+
+  <!-- Anorexigenic inputs (middle/bottom) -->
+  <g class="cd-box cd-molecule" transform="translate(20,138)">
+    <rect width="170" height="50" rx="8"/>
+    <text class="cd-label" x="85" y="22">렙틴 (Leptin)</text>
+    <text class="cd-sublabel" x="85" y="38">지방세포 (장기)</text>
+  </g>
+  <g class="cd-box cd-molecule" transform="translate(20,200)">
+    <rect width="170" height="50" rx="8"/>
+    <text class="cd-label" x="85" y="22">인슐린 (Insulin)</text>
+    <text class="cd-sublabel" x="85" y="38">췌장 (장기)</text>
+  </g>
+  <g class="cd-box cd-molecule" transform="translate(20,262)">
+    <rect width="170" height="50" rx="8"/>
+    <text class="cd-label" x="85" y="22">PYY · GLP-1 · CCK</text>
+    <text class="cd-sublabel" x="85" y="38">장 (식후 단기)</text>
+  </g>
+
+  <!-- ARC center -->
+  <g class="cd-box cd-nucleus" transform="translate(290,150)">
+    <rect width="220" height="110" rx="10"/>
+    <text class="cd-label" x="110" y="22">ARC (활꼴핵)</text>
+    <text class="cd-sublabel" x="110" y="38">혈중 호르몬 직접 감지</text>
+    <line x1="20" y1="50" x2="200" y2="50" stroke="#b8714e" stroke-width="0.8" stroke-dasharray="3 3"/>
+    <text class="cd-sublabel" x="110" y="68" font-weight="600">AgRP/NPY</text>
+    <text class="cd-sublabel" x="110" y="82">"먹어!" (orexigenic)</text>
+    <text class="cd-sublabel" x="110" y="96" font-weight="600">POMC/CART</text>
+    <text class="cd-sublabel" x="110" y="110">"그만!" (anorexigenic)</text>
+  </g>
+
+  <!-- Outputs -->
+  <g class="cd-box cd-nucleus" transform="translate(610,80)">
+    <rect width="180" height="56" rx="8"/>
+    <text class="cd-label" x="90" y="24">LH (외측)</text>
+    <text class="cd-sublabel" x="90" y="42">섭식 중추 · 오렉신</text>
+  </g>
+  <g class="cd-box cd-nucleus" transform="translate(610,170)">
+    <rect width="180" height="56" rx="8"/>
+    <text class="cd-label" x="90" y="24">VMH (복내측)</text>
+    <text class="cd-sublabel" x="90" y="42">포만 중추</text>
+  </g>
+  <g class="cd-box cd-nucleus" transform="translate(610,260)">
+    <rect width="180" height="56" rx="8"/>
+    <text class="cd-label" x="90" y="24">PVN (실방핵)</text>
+    <text class="cd-sublabel" x="90" y="42">자율·내분비 출력</text>
+  </g>
+
+  <g class="cd-box cd-output" transform="translate(610,360)">
+    <rect width="180" height="44" rx="8"/>
+    <text class="cd-label" x="90" y="22">식사 / 포만 결정</text>
+  </g>
+
+  <!-- Edges: hormones to ARC -->
+  <path class="cd-arrow" d="M 190,71 L 290,180" marker-end="url(#feed-arr)"/>
+  <text class="cd-edge" x="240" y="120">자극</text>
+
+  <path class="cd-arrow-inhibit" d="M 190,163 L 290,210" marker-end="url(#feed-arr-inh)"/>
+  <text class="cd-edge" x="245" y="180">억제 (POMC ↑)</text>
+  <path class="cd-arrow-inhibit" d="M 190,225 L 290,225" marker-end="url(#feed-arr-inh)"/>
+  <path class="cd-arrow-inhibit" d="M 190,287 L 290,240" marker-end="url(#feed-arr-inh)"/>
+
+  <!-- ARC -> outputs -->
+  <path class="cd-arrow" d="M 510,180 C 560,180 580,108 610,108" marker-end="url(#feed-arr)"/>
+  <text class="cd-edge" x="557" y="135">AgRP→LH</text>
+  <path class="cd-arrow" d="M 510,205 L 610,198" marker-end="url(#feed-arr)"/>
+  <text class="cd-edge" x="557" y="195">POMC→VMH</text>
+  <path class="cd-arrow" d="M 510,232 C 560,232 580,288 610,288" marker-end="url(#feed-arr)"/>
+  <text class="cd-edge" x="557" y="270">POMC→PVN</text>
+
+  <!-- Outputs -> behavior -->
+  <path class="cd-arrow" d="M 700,316 L 700,360" marker-end="url(#feed-arr)"/>
+</svg>

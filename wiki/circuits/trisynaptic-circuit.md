@@ -24,6 +24,10 @@ see_also:
 [EC](../nuclei/entorhinal.md) → [DG](../nuclei/dg.md) → [CA3](../nuclei/ca3.md) → [CA1](../nuclei/ca1.md).
 짧지만 학습·기억의 거의 모든 분자 기전이 발견된 회로. **LTP**(장기 강화)의 무대.
 
+## 회로 도식
+
+{% include diagrams/trisynaptic-circuit.html %}
+
 ## 회로의 단계
 
 ```

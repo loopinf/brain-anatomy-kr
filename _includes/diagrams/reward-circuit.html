@@ -1,0 +1,87 @@
+{%- comment -%}
+  Reward & addiction circuit — VTA dopamine to NAc (mesolimbic) + PFC
+  (mesocortical), with amygdala/hippocampus inputs and reward prediction
+  error feedback. Park Mun-ho-style box-and-arrow schematic.
+{%- endcomment -%}
+<svg class="circuit-diagram" viewBox="0 0 820 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="보상 회로 도식">
+  <defs>
+    <marker id="rwd-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b15c40"/>
+    </marker>
+    <marker id="rwd-arr-mod" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6b6862"/>
+    </marker>
+  </defs>
+
+  <text class="cd-section" x="20" y="24">입력 (단서 · 맥락)</text>
+  <text class="cd-section" x="335" y="24">중심 (DA 출발)</text>
+  <text class="cd-section" x="595" y="24">출력 (행동 · 인지)</text>
+
+  <!-- Inputs (left column) -->
+  <g class="cd-box cd-region" transform="translate(20,46)">
+    <rect width="160" height="58" rx="8"/>
+    <text class="cd-label" x="80" y="24">편도체 (BLA)</text>
+    <text class="cd-sublabel" x="80" y="42">감정·단서 학습</text>
+  </g>
+  <g class="cd-box cd-region" transform="translate(20,140)">
+    <rect width="160" height="58" rx="8"/>
+    <text class="cd-label" x="80" y="24">해마</text>
+    <text class="cd-sublabel" x="80" y="42">맥락 표상</text>
+  </g>
+  <g class="cd-box cd-input" transform="translate(20,234)">
+    <rect width="160" height="58" rx="8"/>
+    <text class="cd-label" x="80" y="24">감각·식이·약물</text>
+    <text class="cd-sublabel" x="80" y="42">외부 보상 자극</text>
+  </g>
+
+  <!-- VTA center -->
+  <g class="cd-box cd-nucleus" transform="translate(310,140)">
+    <rect width="170" height="80" rx="10"/>
+    <text class="cd-label" x="85" y="28">VTA</text>
+    <text class="cd-sublabel" x="85" y="48">복측피개영역</text>
+    <text class="cd-sublabel" x="85" y="64">DA 뉴런 burst (RPE)</text>
+  </g>
+
+  <!-- Outputs (right column) -->
+  <g class="cd-box cd-nucleus" transform="translate(610,46)">
+    <rect width="190" height="58" rx="8"/>
+    <text class="cd-label" x="95" y="24">전전두엽 (PFC)</text>
+    <text class="cd-sublabel" x="95" y="42">중뇌피질 · 인지·실행</text>
+  </g>
+  <g class="cd-box cd-nucleus" transform="translate(610,140)">
+    <rect width="190" height="58" rx="8"/>
+    <text class="cd-label" x="95" y="24">측좌핵 (NAc)</text>
+    <text class="cd-sublabel" x="95" y="42">중뇌변연 · "wanting"</text>
+  </g>
+  <g class="cd-box cd-output" transform="translate(610,234)">
+    <rect width="190" height="58" rx="8"/>
+    <text class="cd-label" x="95" y="24">행동 · 동기 · 갈망</text>
+    <text class="cd-sublabel" x="95" y="42">접근·반복·의존</text>
+  </g>
+
+  <!-- Edges: inputs to VTA -->
+  <path class="cd-arrow-modulate" d="M 180,75 C 250,75 280,140 310,165" marker-end="url(#rwd-arr-mod)"/>
+  <text class="cd-edge" x="248" y="115">단서</text>
+  <path class="cd-arrow-modulate" d="M 180,169 L 310,180" marker-end="url(#rwd-arr-mod)"/>
+  <text class="cd-edge" x="248" y="166">맥락</text>
+  <path class="cd-arrow-modulate" d="M 180,263 C 250,263 280,220 310,200" marker-end="url(#rwd-arr-mod)"/>
+  <text class="cd-edge" x="248" y="248">자극</text>
+
+  <!-- VTA -> PFC (mesocortical) -->
+  <path class="cd-arrow" d="M 480,160 C 540,160 560,75 610,75" marker-end="url(#rwd-arr)"/>
+  <text class="cd-edge" x="545" y="100">DA</text>
+  <text class="cd-edge cd-edge-sub" x="545" y="113">중뇌피질</text>
+
+  <!-- VTA -> NAc (mesolimbic) -->
+  <path class="cd-arrow" d="M 480,180 L 610,170" marker-end="url(#rwd-arr)"/>
+  <text class="cd-edge" x="545" y="160">DA</text>
+  <text class="cd-edge cd-edge-sub" x="545" y="174">중뇌변연</text>
+
+  <!-- NAc -> behavior -->
+  <path class="cd-arrow" d="M 705,198 L 705,234" marker-end="url(#rwd-arr)"/>
+
+  <!-- Loop: behavior outcome back to VTA (RPE) -->
+  <path class="cd-arrow-loop" d="M 610,263 C 540,295 420,300 395,225" marker-end="url(#rwd-arr)"/>
+  <text class="cd-edge" x="475" y="305">RPE 피드백</text>
+  <text class="cd-edge cd-edge-sub" x="475" y="318">(보상이 기대보다 좋으면 +)</text>
+</svg>

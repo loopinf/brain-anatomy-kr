@@ -31,6 +31,10 @@ see_also:
 > **공복** → 그렐린 ↑ → ARC의 AgRP/NPY 활성 → LH 자극 → **식사**
 > **식사 후** → 렙틴/인슐린/PYY ↑ → ARC의 POMC 활성 → VMH·PVN 활성 → **포만**
 
+## 회로 도식
+
+{% include diagrams/hypothalamic-feeding.html %}
+
 ## 등장 인물
 
 ### 핵 (nuclei) — 시상하부 안의 네 개

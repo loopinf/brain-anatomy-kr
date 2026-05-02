@@ -27,6 +27,10 @@ see_also:
 [**RVM**(rostral ventromedial medulla)](../nuclei/rvm.md)을 거쳐 척수 후각의
 첫 시냅스에서 통증 신호를 차단한다. 내인성 아편 시스템의 작동 무대.
 
+## 회로 도식
+
+{% include diagrams/descending-pain-modulation.html %}
+
 ## 등장 인물
 
 | 단계 | 구조 | 역할 |

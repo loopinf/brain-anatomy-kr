@@ -23,6 +23,10 @@ see_also:
 [시상](../regions/thalamus.md)까지 올라가, 거기서 다시 대뇌피질로 갈라진다.
 "통증이 어디 났는지"와 "얼마나 아픈지"가 두 가닥으로 나뉘는 회로.
 
+## 회로 도식
+
+{% include diagrams/ascending-pain-pathway.html %}
+
 ## 등장 인물
 
 | 단계 | 구조 | 역할 |
